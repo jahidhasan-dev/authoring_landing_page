@@ -57,7 +57,7 @@ const IndexPage = () => {
             'Store and manage multiple SDSs in one dashboard',
             'Easier team collaboration and document control'
           ],
-          buttonText: 'Choose Plan',
+          buttonText: 'Get Early Access',
           buttonStyle: 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700',
           recommended: true,
           hasTierSelector: true,
@@ -80,15 +80,10 @@ const IndexPage = () => {
             'Everything in Standard, plus:',
             'Custom pricing for bulk SDS generation',
             'Dedicated account management',
-            'Contact us to know details',
-            'Priority support',
-            'White-label solution with your branding',
-            'Advanced API integration and automation',
             'Custom compliance reporting and analytics',
             '24/7 dedicated technical support',
             'On-site training and implementation support',
             'Unlimited SDS generation with premium AI suggestions',
-            'Advanced team collaboration with role-based permissions'
           ],
           buttonText: 'Contact Us',
           buttonStyle: 'bg-blue-600 hover:bg-blue-700'
@@ -100,52 +95,35 @@ const IndexPage = () => {
       icon: FileText,
       plans: [
         {
-          name: 'Starter',
-          price: '$9',
-          period: '/month',
-          description: 'Perfect for individuals',
+          name: 'Authoring Lite',
+          price: 'From $199',
+          period: '/year',
+          description: 'Create compliant SDSs in minutes',
           features: [
-            'Easy-to-use interface',
-            'Template library',
-            'Basic compliance checks',
-            'PDF export',
-            'Up to 10 SDS per month'
-          ],
-          buttonText: 'Start Free Trial',
-          buttonStyle: 'bg-indigo-600 hover:bg-indigo-700'
-        },
-        {
-          name: 'Professional',
-          price: '$19',
-          period: '/month',
-          description: 'For small businesses',
-          features: [
-            'All Starter features +',
-            'Unlimited SDS creation',
-            'Advanced templates',
-            'Batch processing',
-            'Email support',
-            'Custom branding'
+            'Create SDSs in 25 different languages',
+            'Localize Safety Data Sheets with 70% auto-conversion',
+            'Create new revisions from existing PDF files',
+            'Clone existing SDSs by importing PDF files',
+            'Update and publish new revisions in minutes',
+            'Professional SDS authoring interface',
+            'Compliance checks and validation',
+            'PDF export and distribution'
           ],
           buttonText: 'Start Free Trial',
           buttonStyle: 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700',
-          recommended: true
-        },
-        {
-          name: 'Business',
-          price: '$39',
-          period: '/month',
-          description: 'For growing teams',
-          features: [
-            'All Professional features +',
-            'Team collaboration',
-            'Advanced compliance checks',
-            'Priority support',
-            'API access',
-            'Custom integrations'
-          ],
-          buttonText: 'Start Free Trial',
-          buttonStyle: 'bg-indigo-600 hover:bg-indigo-700'
+          secondaryButton: {
+            text: 'Book Live Demo',
+            style: 'bg-yellow-400 hover:bg-yellow-500 text-gray-900'
+          },
+          recommended: true,
+          hasTierSelector: true,
+          tiers: [
+            { range: '1 - 4 SDS', price: '$199' },
+            { range: '5 - 19 SDS', price: '$399' },
+            { range: '20 - 99 SDS', price: '$799' },
+            { range: '100 - 499 SDS', price: '$1,499' },
+            { range: '500+ SDS', price: 'Custom' }
+          ]
         }
       ]
     },
@@ -154,52 +132,24 @@ const IndexPage = () => {
       icon: Users,
       plans: [
         {
-          name: 'Consultation',
-          price: '$150',
-          period: '/hour',
-          description: 'Expert guidance',
-          features: [
-            'Expert consultation',
-            'Compliance review',
-            'Regulatory guidance',
-            'Best practices advice',
-            'Documentation review'
-          ],
-          buttonText: 'Book Consultation',
-          buttonStyle: 'bg-blue-600 hover:bg-blue-700'
-        },
-        {
-          name: 'SDS Creation',
-          price: '$75',
-          period: '/SDS',
-          description: 'Professional SDS creation',
-          features: [
-            'Custom SDS creation',
-            'Regulatory compliance',
-            'Multi-language support',
-            'Quality assurance',
-            'Fast turnaround',
-            'Revision management'
-          ],
-          buttonText: 'Get Quote',
-          buttonStyle: 'bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700',
-          recommended: true
-        },
-        {
-          name: 'Full Service',
-          price: 'Custom',
+          name: 'Professional SDS Services',
+          price: 'Custom Pricing',
           period: '',
-          description: 'Complete SDS management',
+          description: 'Expert SDS creation and management services tailored to your needs',
           features: [
-            'All services included',
-            'Dedicated account manager',
-            'Custom workflows',
-            'Training & support',
-            'Ongoing maintenance',
-            'Priority processing'
+            'Expert consultation and guidance',
+            'Custom SDS creation and revision',
+            'Regulatory compliance review',
+            'Multi-language SDS support',
+            'Quality assurance and validation',
+            'Fast turnaround and delivery',
+            'Dedicated account management',
+            'Ongoing maintenance and updates'
           ],
           buttonText: 'Contact Us',
-          buttonStyle: 'bg-blue-600 hover:bg-blue-700'
+          buttonStyle: 'bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-700 hover:via-purple-700 hover:to-pink-700',
+          recommended: true,
+          isContactOnly: true
         }
       ]
     }
@@ -260,14 +210,17 @@ const IndexPage = () => {
                 transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
                 className="flex flex-col sm:flex-row gap-4 items-endb"
               >
-                <motion.button
+                <motion.a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLScDmCvkwwIrbh-bRW9OIzYDt_Uxk-GNVznykMepfrXHVjZjEg/viewform"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="btn btn-primary btn-lg flex items-center bg-blue-600 text-white hover:bg-blue-700 font-semibold"
                 >
-                  Start Free Trial
+                  Get Early Access
                   <ArrowRight className="w-5 h-5 ml-2" />
-                </motion.button>
+                </motion.a>
               </motion.div>
               
             </motion.div>
@@ -700,7 +653,13 @@ const IndexPage = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="grid grid-cols-1 lg:grid-cols-3 gap-6"
+              className={`grid gap-6 ${
+                activePricingPanel === 'authoringlite' 
+                  ? 'grid-cols-1 max-w-2xl mx-auto' 
+                  : activePricingPanel === 'sdsservices'
+                  ? 'grid-cols-1 max-w-2xl mx-auto'
+                  : 'grid-cols-1 lg:grid-cols-3'
+              }`}
             >
               {pricingData[activePricingPanel].plans.map((plan, index) => (
                 <motion.div
@@ -729,7 +688,10 @@ const IndexPage = () => {
                         {plan.hasTierSelector && plan.tiers ? plan.tiers[selectedTier].price : plan.price}
                         {plan.period && <span className="text-lg text-gray-500">{plan.period}</span>}
                       </div>
-                      <p className="text-gray-600">{plan.description}</p>
+                      <p className="text-gray-600 mb-2">{plan.description}</p>
+                      {plan.pricingNote && (
+                        <p className="text-sm text-gray-500 italic">{plan.pricingNote}</p>
+                      )}
                     </div>
 
                     {/* Tier Selector for Standard Plan */}
@@ -768,14 +730,63 @@ const IndexPage = () => {
                       ))}
                     </div>
                     
-                    {/* CTA Button */}
-                    <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className={`w-full ${plan.buttonStyle} text-white py-4 px-6 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg`}
-                    >
-                      {plan.buttonText}
-                    </motion.button>
+                    {/* CTA Buttons */}
+                    {plan.secondaryButton ? (
+                      // Two-button layout for Authoring Lite
+                      <div className="flex gap-3">
+                        <motion.button
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                          className={`flex-1 ${plan.buttonStyle} text-white py-4 px-6 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg`}
+                        >
+                          {plan.buttonText}
+                        </motion.button>
+                        <motion.button
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                          className={`flex-1 ${plan.secondaryButton.style} py-4 px-6 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg`}
+                        >
+                          {plan.secondaryButton.text}
+                        </motion.button>
+                      </div>
+                    ) : plan.isContactOnly ? (
+                      // Eye-catching Contact Us button for SDS Services
+                      <motion.a
+                        href="https://docs.google.com/forms/d/e/1FAIpQLScDmCvkwwIrbh-bRW9OIzYDt_Uxk-GNVznykMepfrXHVjZjEg/viewform"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.05, y: -2 }}
+                        whileTap={{ scale: 0.98 }}
+                        className={`w-full ${plan.buttonStyle} text-white py-6 px-8 rounded-2xl font-bold text-lg transition-all duration-300 shadow-xl hover:shadow-2xl block text-center relative overflow-hidden`}
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+                        <span className="relative z-10 flex items-center justify-center">
+                          {plan.buttonText}
+                          <ArrowRight className="w-6 h-6 ml-3" />
+                        </span>
+                      </motion.a>
+                    ) : (plan.buttonText === 'Get Early Access' || plan.buttonText === 'Contact Us') ? (
+                      // Single button with link for other sections
+                      <motion.a
+                        href="https://docs.google.com/forms/d/e/1FAIpQLScDmCvkwwIrbh-bRW9OIzYDt_Uxk-GNVznykMepfrXHVjZjEg/viewform"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className={`w-full ${plan.buttonStyle} text-white py-4 px-6 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg block text-center`}
+                      >
+                        {plan.buttonText}
+                      </motion.a>
+                    ) : (
+                      // Single button for other sections
+                      <motion.button
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className={`w-full ${plan.buttonStyle} text-white py-4 px-6 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg`}
+                      >
+                        {plan.buttonText}
+                      </motion.button>
+                    )}
                   </div>
                 </motion.div>
               ))}
