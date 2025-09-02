@@ -24,17 +24,184 @@ import Seo from "../components/seo"
 const IndexPage = () => {
   const [heroRef, heroInView] = useInView({ threshold: 0.1, triggerOnce: true })
   const [certificationRef, certificationInView] = useInView({ threshold: 0.1, triggerOnce: true })
+  const [activePricingPanel, setActivePricingPanel] = React.useState('exactsds')
+
+  // Pricing data for each product
+  const pricingData = {
+    exactsds: {
+      name: 'ExactSDS',
+      icon: Database,
+      plans: [
+        {
+          name: 'Basic',
+          price: '$29',
+          period: '/month',
+          description: 'Perfect for small teams',
+          features: [
+            'Mobile access for all users',
+            'GHS labels included',
+            'Upload your own SDS',
+            'Secondary Container Labeling',
+            'Basic compliance tracking'
+          ],
+          buttonText: 'Start Free Trial',
+          buttonStyle: 'bg-blue-600 hover:bg-blue-700'
+        },
+        {
+          name: 'Premium',
+          price: '$59',
+          period: '/month',
+          description: 'Ideal for growing businesses',
+          features: [
+            'All Basic features +',
+            'Advanced compliance tracking',
+            'Team collaboration tools',
+            'API integration',
+            'Automatic revision alerts',
+            'Location-based organization'
+          ],
+          buttonText: 'Start Free Trial',
+          buttonStyle: 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700',
+          recommended: true
+        },
+        {
+          name: 'Enterprise',
+          price: '$99',
+          period: '/month',
+          description: 'For enterprise solutions',
+          features: [
+            'All Premium features +',
+            'Advanced reporting & exports',
+            'Custom integrations',
+            'Priority support',
+            'Advanced security controls',
+            'Unlimited users'
+          ],
+          buttonText: 'Contact Sales',
+          buttonStyle: 'bg-blue-600 hover:bg-blue-700'
+        }
+      ]
+    },
+    authoringlite: {
+      name: 'Authoring Lite',
+      icon: FileText,
+      plans: [
+        {
+          name: 'Starter',
+          price: '$9',
+          period: '/month',
+          description: 'Perfect for individuals',
+          features: [
+            'Easy-to-use interface',
+            'Template library',
+            'Basic compliance checks',
+            'PDF export',
+            'Up to 10 SDS per month'
+          ],
+          buttonText: 'Start Free Trial',
+          buttonStyle: 'bg-indigo-600 hover:bg-indigo-700'
+        },
+        {
+          name: 'Professional',
+          price: '$19',
+          period: '/month',
+          description: 'For small businesses',
+          features: [
+            'All Starter features +',
+            'Unlimited SDS creation',
+            'Advanced templates',
+            'Batch processing',
+            'Email support',
+            'Custom branding'
+          ],
+          buttonText: 'Start Free Trial',
+          buttonStyle: 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700',
+          recommended: true
+        },
+        {
+          name: 'Business',
+          price: '$39',
+          period: '/month',
+          description: 'For growing teams',
+          features: [
+            'All Professional features +',
+            'Team collaboration',
+            'Advanced compliance checks',
+            'Priority support',
+            'API access',
+            'Custom integrations'
+          ],
+          buttonText: 'Start Free Trial',
+          buttonStyle: 'bg-indigo-600 hover:bg-indigo-700'
+        }
+      ]
+    },
+    sdsservices: {
+      name: 'SDS Services',
+      icon: Users,
+      plans: [
+        {
+          name: 'Consultation',
+          price: '$150',
+          period: '/hour',
+          description: 'Expert guidance',
+          features: [
+            'Expert consultation',
+            'Compliance review',
+            'Regulatory guidance',
+            'Best practices advice',
+            'Documentation review'
+          ],
+          buttonText: 'Book Consultation',
+          buttonStyle: 'bg-blue-600 hover:bg-blue-700'
+        },
+        {
+          name: 'SDS Creation',
+          price: '$75',
+          period: '/SDS',
+          description: 'Professional SDS creation',
+          features: [
+            'Custom SDS creation',
+            'Regulatory compliance',
+            'Multi-language support',
+            'Quality assurance',
+            'Fast turnaround',
+            'Revision management'
+          ],
+          buttonText: 'Get Quote',
+          buttonStyle: 'bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700',
+          recommended: true
+        },
+        {
+          name: 'Full Service',
+          price: 'Custom',
+          period: '',
+          description: 'Complete SDS management',
+          features: [
+            'All services included',
+            'Dedicated account manager',
+            'Custom workflows',
+            'Training & support',
+            'Ongoing maintenance',
+            'Priority processing'
+          ],
+          buttonText: 'Contact Us',
+          buttonStyle: 'bg-blue-600 hover:bg-blue-700'
+        }
+      ]
+    }
+  }
 
   return (
     <Layout>
       {/* Hero Section */}
-      <section ref={heroRef} className="hero py-24 lg:py-32 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <section ref={heroRef} className="hero py-16 lg:py-20 relative">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={heroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-stretch min-h-[450px] lg:min-h-[530px]"
+            className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-stretch min-h-[400px] lg:min-h-[450px]"
           >
             {/* Left Side - Text Content */}
             <motion.div
@@ -145,30 +312,30 @@ const IndexPage = () => {
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
           className="absolute bottom-20 right-10 w-32 h-32 bg-white/10 rounded-full blur-xl"
         />
-              </section>
+      </section>
 
-        {/* Products Section */}
-        <section className="py-24 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden">
+      {/* Products Section */}
+      <section className="py-16 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden">
           {/* Background decorative elements */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.1),transparent_50%)]"></div>
           <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-blue-200/20 to-indigo-200/20 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-br from-indigo-200/20 to-purple-200/20 rounded-full blur-3xl"></div>
           
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             {/* Section Header */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="text-center mb-20"
+              className="text-center mb-12"
             >
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="inline-flex items-center px-6 py-3 bg-blue-600/10 text-blue-600 rounded-full mb-8 border border-blue-600/20 backdrop-blur-sm"
+                className="inline-flex items-center px-6 py-3 bg-blue-600/10 text-blue-600 rounded-full mb-6 border border-blue-600/20 backdrop-blur-sm"
               >
                 <Zap className="w-5 h-5 mr-2" />
                 <span className="font-semibold">OUR PRODUCTS</span>
@@ -179,7 +346,7 @@ const IndexPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
                 viewport={{ once: true }}
-                className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6"
+                className="text-3xl lg:text-5xl font-bold text-gray-900 mb-4"
               >
                 Choose the{" "}
                 <span className="text-blue-600">
@@ -192,14 +359,14 @@ const IndexPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
                 viewport={{ once: true }}
-                className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
+                className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed"
               >
                 From basic SDS creation to enterprise-level solutions, we have the perfect tool for your needs.
               </motion.p>
             </motion.div>
 
             {/* Products Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               
               {/* Product 1: ExactSDS - Modern Split Card */}
               <motion.div
@@ -442,22 +609,22 @@ const IndexPage = () => {
         </section>
 
         {/* Pricing Section */}
-        <section className="py-24 bg-white relative">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-16 bg-white relative">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Section Header */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="text-center mb-16"
+              className="text-center mb-12"
             >
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="inline-flex items-center px-6 py-3 bg-blue-600/10 text-blue-600 rounded-full mb-8 border border-blue-600/20 backdrop-blur-sm"
+                className="inline-flex items-center px-6 py-3 bg-blue-600/10 text-blue-600 rounded-full mb-6 border border-blue-600/20 backdrop-blur-sm"
               >
                 <BarChart3 className="w-5 h-5 mr-2" />
                 <span className="font-semibold">PRICING PLANS</span>
@@ -468,7 +635,7 @@ const IndexPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
                 viewport={{ once: true }}
-                className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6"
+                className="text-3xl lg:text-5xl font-bold text-gray-900 mb-4"
               >
                 Choose Your{" "}
                 <span className="text-blue-600">
@@ -481,7 +648,7 @@ const IndexPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
                 viewport={{ once: true }}
-                className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
+                className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed"
               >
                 Flexible pricing options designed to grow with your business needs.
               </motion.p>
@@ -493,7 +660,7 @@ const IndexPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
               viewport={{ once: true }}
-              className="flex justify-center mb-16"
+              className="flex justify-center mb-12"
             >
               <div className="relative bg-gray-100 rounded-2xl p-2 shadow-inner">
                 {/* Carved Panel Background */}
@@ -502,21 +669,22 @@ const IndexPage = () => {
                 {/* Product Tabs */}
                 <div className="relative flex space-x-1">
                   {[
-                    { id: 'exactsds', name: 'ExactSDS', icon: Database, active: true },
-                    { id: 'authoringlite', name: 'Authoring Lite', icon: FileText, active: false },
-                    { id: 'sdsservices', name: 'SDS Services', icon: Users, active: false }
+                    { id: 'exactsds', name: 'ExactSDS', icon: Database },
+                    { id: 'authoringlite', name: 'Authoring Lite', icon: FileText },
+                    { id: 'sdsservices', name: 'SDS Services', icon: Users }
                   ].map((product, index) => (
                     <motion.button
                       key={product.id}
+                      onClick={() => setActivePricingPanel(product.id)}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       className={`relative px-8 py-4 rounded-xl font-semibold transition-all duration-300 flex items-center space-x-3 ${
-                        product.active 
+                        activePricingPanel === product.id
                           ? 'text-white shadow-lg' 
                           : 'text-gray-600 hover:text-gray-800'
                       }`}
                     >
-                      {product.active && (
+                      {activePricingPanel === product.id && (
                         <motion.div
                           layoutId="activeTab"
                           className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl shadow-lg"
@@ -525,7 +693,7 @@ const IndexPage = () => {
                         />
                       )}
                       <div className="relative z-10 flex items-center space-x-3">
-                        <product.icon className={`w-5 h-5 ${product.active ? 'text-white' : 'text-gray-500'}`} />
+                        <product.icon className={`w-5 h-5 ${activePricingPanel === product.id ? 'text-white' : 'text-gray-500'}`} />
                         <span>{product.name}</span>
                       </div>
                     </motion.button>
@@ -534,182 +702,69 @@ const IndexPage = () => {
               </div>
             </motion.div>
 
-            {/* Pricing Cards */}
+            {/* Dynamic Pricing Cards */}
             <motion.div
+              key={activePricingPanel}
               initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              viewport={{ once: true }}
-              className="grid grid-cols-1 lg:grid-cols-3 gap-8"
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="grid grid-cols-1 lg:grid-cols-3 gap-6"
             >
-              
-              {/* Basic Plan */}
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.7 }}
-                viewport={{ once: true }}
-                className="group"
-              >
-                <div className="relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100">
-                  {/* Plan Header */}
-                  <div className="text-center mb-8">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-4">Basic</h3>
-                    <div className="text-4xl font-bold text-gray-900 mb-2">$19<span className="text-lg text-gray-500">/month</span></div>
-                    <p className="text-gray-600">Perfect for small teams</p>
-                  </div>
+              {pricingData[activePricingPanel].plans.map((plan, index) => (
+                <motion.div
+                  key={plan.name}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className={`group relative ${plan.recommended ? 'lg:scale-105' : ''}`}
+                >
+                  {/* Recommended Badge */}
+                  {plan.recommended && (
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+                      <div className="bg-gradient-to-r from-yellow-400 to-orange-400 text-white px-6 py-2 rounded-full text-sm font-semibold shadow-lg">
+                        Recommended
+                      </div>
+                    </div>
+                  )}
                   
-                  {/* Features */}
-                  <div className="space-y-4 mb-8">
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" />
-                      <span>Mobile access for all users</span>
+                  <div className={`relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 ${
+                    plan.recommended ? 'border-2 border-blue-200 shadow-xl' : 'border border-gray-100'
+                  }`}>
+                    {/* Plan Header */}
+                    <div className="text-center mb-8">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-4">{plan.name}</h3>
+                      <div className="text-4xl font-bold text-gray-900 mb-2">
+                        {plan.price}
+                        {plan.period && <span className="text-lg text-gray-500">{plan.period}</span>}
+                      </div>
+                      <p className="text-gray-600">{plan.description}</p>
                     </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" />
-                      <span>GHS labels included</span>
+                    
+                    {/* Features */}
+                    <div className="space-y-4 mb-8">
+                      {plan.features.map((feature, featureIndex) => (
+                        <div key={featureIndex} className="flex items-center text-sm text-gray-600">
+                          <CheckCircle className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" />
+                          <span>{feature}</span>
+                        </div>
+                      ))}
                     </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" />
-                      <span>Upload your own SDS</span>
-                    </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" />
-                      <span>Secondary Container Labeling</span>
-                    </div>
-                  </div>
-                  
-                  {/* CTA Button */}
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="w-full bg-blue-600 text-white py-4 px-6 rounded-xl font-semibold hover:bg-blue-700 transition-all duration-300 shadow-md hover:shadow-lg mb-4"
-                  >
-                    Start Free Trial
-                  </motion.button>
-                  
-                  <div className="text-center">
-                    <a href="#" className="text-blue-600 hover:text-blue-700 text-sm font-medium">See all features →</a>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Premium Plan */}
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-                viewport={{ once: true }}
-                className="group relative"
-              >
-                {/* Recommended Badge */}
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                  <div className="bg-gradient-to-r from-yellow-400 to-orange-400 text-white px-6 py-2 rounded-full text-sm font-semibold shadow-lg">
-                    Recommended
-                  </div>
-                </div>
-                
-                <div className="relative bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border-2 border-blue-200">
-                  {/* Plan Header */}
-                  <div className="text-center mb-8">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-4">Premium</h3>
-                    <div className="text-4xl font-bold text-gray-900 mb-2">$39<span className="text-lg text-gray-500">/month</span></div>
-                    <p className="text-gray-600">Ideal for growing businesses</p>
-                  </div>
-                  
-                  {/* Features */}
-                  <div className="space-y-4 mb-8">
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" />
-                      <span>All Basic features +</span>
-                    </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" />
-                      <span>QR-code SDS library access</span>
-                    </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" />
-                      <span>Automatic revision alerts</span>
-                    </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" />
-                      <span>Location-based organization</span>
-                    </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" />
-                      <span>Offline mobile app access</span>
+                    
+                    {/* CTA Button */}
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className={`w-full ${plan.buttonStyle} text-white py-4 px-6 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg mb-4`}
+                    >
+                      {plan.buttonText}
+                    </motion.button>
+                    
+                    <div className="text-center">
+                      <a href="#" className="text-blue-600 hover:text-blue-700 text-sm font-medium">See all features →</a>
                     </div>
                   </div>
-                  
-                  {/* CTA Button */}
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-4 px-6 rounded-xl font-semibold hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 shadow-md hover:shadow-lg mb-4"
-                  >
-                    Start Free Trial
-                  </motion.button>
-                  
-                  <div className="text-center">
-                    <a href="#" className="text-blue-600 hover:text-blue-700 text-sm font-medium">See all features →</a>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Pro Plan */}
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.9 }}
-                viewport={{ once: true }}
-                className="group"
-              >
-                <div className="relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100">
-                  {/* Plan Header */}
-                  <div className="text-center mb-8">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-4">Pro</h3>
-                    <div className="text-4xl font-bold text-gray-900 mb-2">$59<span className="text-lg text-gray-500">/month</span></div>
-                    <p className="text-gray-600">For enterprise solutions</p>
-                  </div>
-                  
-                  {/* Features */}
-                  <div className="space-y-4 mb-8">
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" />
-                      <span>All Premium features +</span>
-                    </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" />
-                      <span>Risk assessment tools</span>
-                    </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" />
-                      <span>Hazardous product alerts</span>
-                    </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" />
-                      <span>Usage & disposal tracking</span>
-                    </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" />
-                      <span>Advanced reporting & exports</span>
-                    </div>
-                  </div>
-                  
-                  {/* CTA Button */}
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="w-full bg-blue-600 text-white py-4 px-6 rounded-xl font-semibold hover:bg-blue-700 transition-all duration-300 shadow-md hover:shadow-lg mb-4"
-                  >
-                    Start Free Trial
-                  </motion.button>
-                  
-                  <div className="text-center">
-                    <a href="#" className="text-blue-600 hover:text-blue-700 text-sm font-medium">See all features →</a>
-                  </div>
-                </div>
-              </motion.div>
+                </motion.div>
+              ))}
             </motion.div>
 
             {/* Trial Information */}
@@ -726,26 +781,26 @@ const IndexPage = () => {
         </section>
 
         {/* Certification Section */}
-        <section ref={certificationRef} className="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-slate-50 relative overflow-hidden">
+        <section ref={certificationRef} className="py-16 bg-gradient-to-br from-slate-50 via-blue-50 to-slate-50 relative overflow-hidden">
           {/* Elegant background elements */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.06),transparent_50%)]"></div>
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(212,175,55,0.04),transparent_50%)]"></div>
           <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-blue-500/3 to-amber-500/3 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-br from-amber-500/3 to-blue-500/3 rounded-full blur-3xl"></div>
           
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             {/* Section Header */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={certificationInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8 }}
-              className="text-center mb-16"
+              className="text-center mb-12"
             >
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={certificationInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-700 via-blue-600 to-blue-700 text-white rounded-full mb-8 shadow-lg"
+                className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-700 via-blue-600 to-blue-700 text-white rounded-full mb-6 shadow-lg"
               >
                 <Shield className="w-5 h-5 mr-2" />
                 <span className="font-semibold tracking-wide">INTERNATIONAL STANDARDS</span>
@@ -755,7 +810,7 @@ const IndexPage = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={certificationInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="text-4xl lg:text-6xl font-bold text-slate-800 mb-6 leading-tight"
+                className="text-3xl lg:text-5xl font-bold text-slate-800 mb-4 leading-tight"
               >
                 SDS Manager is{" "}
                 <span className="bg-gradient-to-r from-blue-700 via-amber-600 to-blue-700 bg-clip-text text-transparent">
@@ -767,7 +822,7 @@ const IndexPage = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={certificationInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed"
+                className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed"
               >
                 Achieving the highest standards in{" "}
                 <strong className="text-slate-800">four critical ISO certifications</strong> for comprehensive security and quality management
@@ -779,7 +834,7 @@ const IndexPage = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={certificationInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
             >
               {/* ISO 27017 - Cloud Management */}
               <motion.div
@@ -947,7 +1002,7 @@ const IndexPage = () => {
                            </div>
                            
                            {/* Central ISO band */}
-                           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-7 bg-gradient-to-r from-amber-400 to-amber-500 rounded flex items-center justify-center">
+                           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-7 bg-gradient-to-r from-amber-400 to-amber-500 rounded flex items-center justify-center z-1">
                              <span className="text-sm font-black text-black">ISO 9001</span>
                            </div>
                            
