@@ -869,7 +869,7 @@ const IndexPage = () => {
                            
                            {/* Central ISO band */}
                            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-7 bg-gradient-to-r from-amber-400 to-amber-500 rounded flex items-center justify-center">
-                             <span className="text-sm font-black text-black">ISO 27017</span>
+                             <span className="text-sm font-black text-black mb-1">ISO 27017</span>
                            </div>
                            
                            {/* CERTIFIED banner */}
@@ -936,7 +936,7 @@ const IndexPage = () => {
                            
                            {/* Central ISO band */}
                            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-7 bg-gradient-to-r from-amber-400 to-amber-500 rounded flex items-center justify-center">
-                             <span className="text-sm font-black text-black">ISO 27018</span>
+                             <span className="text-sm font-black text-black mb-1">ISO 27018</span>
                            </div>
                            
                            {/* CERTIFIED banner */}
@@ -1002,8 +1002,8 @@ const IndexPage = () => {
                            </div>
                            
                            {/* Central ISO band */}
-                           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-7 bg-gradient-to-r from-amber-400 to-amber-500 rounded flex items-center justify-center z-1">
-                             <span className="text-sm font-black text-black">ISO 9001</span>
+                           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-7 bg-gradient-to-r from-amber-400 to-amber-500 rounded flex items-center justify-center">
+                             <span className="text-sm font-black text-black mb-1">ISO 9001</span>
                            </div>
                            
                            {/* CERTIFIED banner */}
@@ -1070,7 +1070,7 @@ const IndexPage = () => {
                            
                            {/* Central ISO band */}
                            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-7 bg-gradient-to-r from-amber-400 to-amber-500 rounded flex items-center justify-center">
-                             <span className="text-sm font-black text-black">ISO 27001</span>
+                             <span className="text-sm font-black text-black mb-1">ISO 27001</span>
                            </div>
                            
                            {/* CERTIFIED banner */}
