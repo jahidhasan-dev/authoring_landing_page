@@ -26,7 +26,7 @@
 @layer utilities {
   .hero {
     @apply relative overflow-hidden;
-    background: linear-gradient(135deg, #fdfdfdf4 0%, #ffffff 50%, #b5b9efac 100%);
+    background: linear-gradient(100deg, #b6c9fb 0%, #ffffff 50%, #b6c9fb 100%);
   }
 }
 
