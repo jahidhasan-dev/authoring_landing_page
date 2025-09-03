@@ -46,7 +46,7 @@ const IndexPage = () => {
         {
           name: 'Standard',
           price: 'From $499',
-          period: '',
+          period: '/year',
           description: 'Ideal for regular SDS creation',
           features: [
             'Everything in Pay-As-You-Go, plus:',
@@ -91,11 +91,11 @@ const IndexPage = () => {
       ]
     },
     authoringlite: {
-      name: 'Authoring Lite',
+      name: 'Author Lite',
       icon: FileText,
       plans: [
         {
-          name: 'Authoring Lite',
+          name: 'Author Lite',
           price: 'From $199',
           period: '/year',
           description: 'Create compliant SDSs in minutes',
@@ -401,7 +401,7 @@ const IndexPage = () => {
                       <Database className="w-10 h-10 text-white" />
                     </div>
                     <div className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full flex items-center justify-center shadow-lg">
-                      <span className="text-xs font-bold text-white">AI</span>
+                      <span className="text-xs font-bold text-white">PRO</span>
                     </div>
                     <div className="absolute -inset-2 bg-gradient-to-br from-cyan-400/20 to-blue-500/20 rounded-3xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   </div>
@@ -473,7 +473,7 @@ const IndexPage = () => {
                   </div>
                   
                   {/* Title & Description */}
-                  <h3 className="text-3xl font-bold text-gray-900 mb-4 group-hover:text-indigo-600 transition-colors duration-300">Authoring Lite</h3>
+                  <h3 className="text-3xl font-bold text-gray-900 mb-4 group-hover:text-indigo-600 transition-colors duration-300">Author Lite</h3>
                   <p className="text-gray-600 leading-relaxed text-lg">
                     Author Lite is a fast, flexible way to revise and update existing Safety Data Sheets. It is designed to help your team edit, customize, and bring your SDSs up to date.
                   </p>
@@ -532,9 +532,6 @@ const IndexPage = () => {
                     <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-blue-600 rounded-3xl flex items-center justify-center shadow-2xl shadow-purple-500/30 group-hover:shadow-purple-500/50 transition-all duration-500">
                       <Users className="w-10 h-10 text-white" />
                     </div>
-                    <div className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-br from-purple-400 to-blue-500 rounded-full flex items-center justify-center shadow-lg">
-                      <span className="text-xs font-bold text-white">PRO</span>
-                    </div>
                     <div className="absolute -inset-2 bg-gradient-to-br from-purple-400/20 to-blue-500/20 rounded-3xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   </div>
                   
@@ -553,257 +550,6 @@ const IndexPage = () => {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section className="py-16 bg-white relative">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="inline-flex items-center px-6 py-3 bg-blue-600/10 text-blue-600 rounded-full mb-6 border border-blue-600/20 backdrop-blur-sm"
-            >
-              <BarChart3 className="w-5 h-5 mr-2" />
-              <span className="font-semibold">PRICING PLANS</span>
-            </motion.div>
-            
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="text-3xl lg:text-5xl font-bold text-gray-900 mb-4"
-            >
-              Choose Your{" "}
-              <span className="text-blue-600">
-                Perfect Plan
-              </span>
-            </motion.h2>
-            
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed"
-            >
-              Flexible pricing options designed to grow with your business needs.
-            </motion.p>
-          </motion.div>
-
-          {/* Product Switcher Panel */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            viewport={{ once: true }}
-            className="flex justify-center mb-12"
-          >
-            <div className="relative bg-gray-100 rounded-2xl p-2 shadow-inner">
-              {/* Carved Panel Background */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl opacity-60"></div>
-              
-              {/* Product Tabs */}
-              <div className="relative flex space-x-1">
-                {[
-                  { id: 'exactsds', name: 'ExactSDS', icon: Database },
-                  { id: 'authoringlite', name: 'Authoring Lite', icon: FileText },
-                  { id: 'sdsservices', name: 'SDS Services', icon: Users }
-                ].map((product, index) => (
-                  <motion.button
-                    key={product.id}
-                    onClick={() => setActivePricingPanel(product.id)}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className={`relative px-8 py-4 rounded-xl font-semibold transition-all duration-300 flex items-center space-x-3 ${
-                      activePricingPanel === product.id
-                        ? 'text-white shadow-lg' 
-                        : 'text-gray-600 hover:text-gray-800'
-                    }`}
-                  >
-                    {activePricingPanel === product.id && (
-                      <motion.div
-                        layoutId="activeTab"
-                        className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl shadow-lg"
-                        initial={false}
-                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                      />
-                    )}
-                    <div className="relative z-10 flex items-center space-x-3">
-                      <product.icon className={`w-5 h-5 ${activePricingPanel === product.id ? 'text-white' : 'text-gray-500'}`} />
-                      <span>{product.name}</span>
-                    </div>
-                  </motion.button>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Dynamic Pricing Cards */}
-          <motion.div
-            key={activePricingPanel}
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className={`grid gap-6 ${
-              activePricingPanel === 'authoringlite' 
-                ? 'grid-cols-1 max-w-2xl mx-auto' 
-                : activePricingPanel === 'sdsservices'
-                ? 'grid-cols-1 max-w-2xl mx-auto'
-                : 'grid-cols-1 lg:grid-cols-3'
-            }`}
-          >
-            {pricingData[activePricingPanel].plans.map((plan, index) => (
-              <motion.div
-                key={plan.name}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`group relative ${plan.recommended ? 'lg:scale-105' : ''}`}
-              >
-                {/* Recommended Badge */}
-                {plan.recommended && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                    <div className="bg-gradient-to-r from-yellow-400 to-orange-400 text-white px-6 py-2 rounded-full text-sm font-semibold shadow-lg">
-                      Recommended
-                    </div>
-                  </div>
-                )}
-                
-                <div className={`relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 ${
-                  plan.recommended ? 'border-2 border-blue-200 shadow-xl' : 'border border-gray-100'
-                }`}>
-                  {/* Plan Header */}
-                  <div className="text-center mb-8">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-4">{plan.name}</h3>
-                    <div className="text-4xl font-bold text-gray-900 mb-2">
-                      {plan.hasTierSelector && plan.tiers ? plan.tiers[selectedTier].price : plan.price}
-                      {plan.period && <span className="text-lg text-gray-500">{plan.period}</span>}
-                    </div>
-                    <p className="text-gray-600 mb-2">{plan.description}</p>
-                    {plan.pricingNote && (
-                      <p className="text-sm text-gray-500 italic">{plan.pricingNote}</p>
-                    )}
-                  </div>
-
-                  {/* Tier Selector for Standard Plan */}
-                  {plan.hasTierSelector && plan.tiers && (
-                    <div className="mb-6">
-                      <label className="block text-xs font-medium text-gray-600 mb-2 text-center uppercase tracking-wide">Select SDS Quantity</label>
-                      <div className="relative">
-                        <select
-                          value={selectedTier}
-                          onChange={(e) => setSelectedTier(parseInt(e.target.value))}
-                          className="w-full appearance-none bg-white border border-gray-200 rounded-lg px-4 py-2.5 text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 hover:border-gray-300 cursor-pointer"
-                        >
-                          {plan.tiers.map((tier, tierIndex) => (
-                            <option key={tierIndex} value={tierIndex}>
-                              {tier.range} - {tier.price}
-                            </option>
-                          ))}
-                        </select>
-                        {/* Custom dropdown arrow */}
-                        <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                          <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                  
-                  {/* Features */}
-                  <div className="space-y-4 mb-8">
-                    {plan.features.map((feature, featureIndex) => (
-                      <div key={featureIndex} className="flex items-center text-sm text-gray-600">
-                        <CheckCircle className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" />
-                        <span>{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                  
-                  {/* CTA Buttons */}
-                  {plan.secondaryButton ? (
-                    // Two-button layout for Authoring Lite
-                    <div className="flex gap-3">
-                      <motion.button
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        className={`flex-1 ${plan.buttonStyle} text-white py-4 px-6 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg`}
-                      >
-                        {plan.buttonText}
-                      </motion.button>
-                      <motion.button
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        className={`flex-1 ${plan.secondaryButton.style} py-4 px-6 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg`}
-                      >
-                        {plan.secondaryButton.text}
-                      </motion.button>
-                    </div>
-                  ) : plan.isContactOnly ? (
-                    // Eye-catching Contact Us button for SDS Services
-                    <motion.a
-                      href="https://docs.google.com/forms/d/e/1FAIpQLScDmCvkwwIrbh-bRW9OIzYDt_Uxk-GNVznykMepfrXHVjZjEg/viewform"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      whileTap={{ scale: 0.98 }}
-                      className={`w-full ${plan.buttonStyle} text-white py-6 px-8 rounded-2xl font-bold text-lg transition-all duration-300 shadow-xl hover:shadow-2xl block text-center relative overflow-hidden`}
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-                      <span className="relative z-10 flex items-center justify-center">
-                        {plan.buttonText}
-                        <ArrowRight className="w-6 h-6 ml-3" />
-                      </span>
-                    </motion.a>
-                  ) : (plan.buttonText === 'Get Early Access' || plan.buttonText === 'Contact Us') ? (
-                    // Single button with link for other sections
-                    <motion.a
-                      href="https://docs.google.com/forms/d/e/1FAIpQLScDmCvkwwIrbh-bRW9OIzYDt_Uxk-GNVznykMepfrXHVjZjEg/viewform"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className={`w-full ${plan.buttonStyle} text-white py-4 px-6 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg block text-center`}
-                    >
-                      {plan.buttonText}
-                    </motion.a>
-                  ) : (
-                    // Single button for other sections
-                    <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className={`w-full ${plan.buttonStyle} text-white py-4 px-6 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg`}
-                    >
-                      {plan.buttonText}
-                    </motion.button>
-                  )}
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* Trial Information */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.0 }}
-            viewport={{ once: true }}
-            className="text-center mt-16"
-          >
-
-          </motion.div>
-        </div>
-      </section>
 
       {/* Certification Section */}
       <section ref={certificationRef} className="py-16 bg-gradient-to-br from-slate-50 via-blue-50 to-slate-50 relative overflow-hidden">
@@ -1063,6 +809,260 @@ const IndexPage = () => {
           </motion.div>
         </div>
       </section>
+
+
+      {/* Pricing Section */}
+      <section className="py-16 bg-white relative">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center px-6 py-3 bg-blue-600/10 text-blue-600 rounded-full mb-6 border border-blue-600/20 backdrop-blur-sm"
+            >
+              <BarChart3 className="w-5 h-5 mr-2" />
+              <span className="font-semibold">PRICING PLANS</span>
+            </motion.div>
+            
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="text-3xl lg:text-5xl font-bold text-gray-900 mb-4"
+            >
+              Choose Your{" "}
+              <span className="text-blue-600">
+                Perfect Plan
+              </span>
+            </motion.h2>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed"
+            >
+              Flexible pricing options designed to grow with your business needs.
+            </motion.p>
+          </motion.div>
+
+          {/* Product Switcher Panel */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            viewport={{ once: true }}
+            className="flex justify-center mb-12"
+          >
+            <div className="relative bg-gray-100 rounded-2xl p-2 shadow-inner">
+              {/* Carved Panel Background */}
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl opacity-60"></div>
+              
+              {/* Product Tabs */}
+              <div className="relative flex space-x-1">
+                {[
+                  { id: 'exactsds', name: 'ExactSDS', icon: Database },
+                  { id: 'authoringlite', name: 'Author Lite', icon: FileText },
+                  { id: 'sdsservices', name: 'SDS Services', icon: Users }
+                ].map((product, index) => (
+                  <motion.button
+                    key={product.id}
+                    onClick={() => setActivePricingPanel(product.id)}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className={`relative px-8 py-4 rounded-xl font-semibold transition-all duration-300 flex items-center space-x-3 ${
+                      activePricingPanel === product.id
+                        ? 'text-white shadow-lg' 
+                        : 'text-gray-600 hover:text-gray-800'
+                    }`}
+                  >
+                    {activePricingPanel === product.id && (
+                      <motion.div
+                        layoutId="activeTab"
+                        className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl shadow-lg"
+                        initial={false}
+                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                      />
+                    )}
+                    <div className="relative z-10 flex items-center space-x-3">
+                      <product.icon className={`w-5 h-5 ${activePricingPanel === product.id ? 'text-white' : 'text-gray-500'}`} />
+                      <span>{product.name}</span>
+                    </div>
+                  </motion.button>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Dynamic Pricing Cards */}
+          <motion.div
+            key={activePricingPanel}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className={`grid gap-6 ${
+              activePricingPanel === 'authoringlite' 
+                ? 'grid-cols-1 max-w-2xl mx-auto' 
+                : activePricingPanel === 'sdsservices'
+                ? 'grid-cols-1 max-w-2xl mx-auto'
+                : 'grid-cols-1 lg:grid-cols-3'
+            }`}
+          >
+            {pricingData[activePricingPanel].plans.map((plan, index) => (
+              <motion.div
+                key={plan.name}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className={`group relative ${plan.recommended ? 'lg:scale-105' : ''}`}
+              >
+                {/* Recommended Badge */}
+                {plan.recommended && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+                    <div className="bg-gradient-to-r from-yellow-400 to-orange-400 text-white px-6 py-2 rounded-full text-sm font-semibold shadow-lg">
+                      Recommended
+                    </div>
+                  </div>
+                )}
+                
+                <div className={`relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 ${
+                  plan.recommended ? 'border-2 border-blue-200 shadow-xl' : 'border border-gray-100'
+                }`}>
+                  {/* Plan Header */}
+                  <div className="text-center mb-8">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-4">{plan.name}</h3>
+                    <div className="text-4xl font-bold text-gray-900 mb-2">
+                      {plan.hasTierSelector && plan.tiers ? plan.tiers[selectedTier].price : plan.price}
+                      {plan.period && <span className="text-lg text-gray-500">{plan.period}</span>}
+                    </div>
+                    <p className="text-gray-600 mb-2">{plan.description}</p>
+                    {plan.pricingNote && (
+                      <p className="text-sm text-gray-500 italic">{plan.pricingNote}</p>
+                    )}
+                  </div>
+
+                  {/* Tier Selector for Standard Plan */}
+                  {plan.hasTierSelector && plan.tiers && (
+                    <div className="mb-6">
+                      <label className="block text-xs font-medium text-gray-600 mb-2 text-center uppercase tracking-wide">Select SDS Quantity</label>
+                      <div className="relative">
+                        <select
+                          value={selectedTier}
+                          onChange={(e) => setSelectedTier(parseInt(e.target.value))}
+                          className="w-full appearance-none bg-white border border-gray-200 rounded-lg px-4 py-2.5 text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 hover:border-gray-300 cursor-pointer"
+                        >
+                          {plan.tiers.map((tier, tierIndex) => (
+                            <option key={tierIndex} value={tierIndex}>
+                              {tier.range} - {tier.price}
+                            </option>
+                          ))}
+                        </select>
+                        {/* Custom dropdown arrow */}
+                        <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                          <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  
+                  {/* Features */}
+                  <div className="space-y-4 mb-8">
+                    {plan.features.map((feature, featureIndex) => (
+                      <div key={featureIndex} className="flex items-center text-sm text-gray-600">
+                        <CheckCircle className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" />
+                        <span>{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  {/* CTA Buttons */}
+                  {plan.secondaryButton ? (
+                    // Two-button layout for Authoring Lite
+                    <div className="flex gap-3">
+                      <motion.button
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className={`flex-1 ${plan.buttonStyle} text-white py-4 px-6 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg`}
+                      >
+                        {plan.buttonText}
+                      </motion.button>
+                      <motion.button
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className={`flex-1 ${plan.secondaryButton.style} py-4 px-6 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg`}
+                      >
+                        {plan.secondaryButton.text}
+                      </motion.button>
+                    </div>
+                  ) : plan.isContactOnly ? (
+                    // Eye-catching Contact Us button for SDS Services
+                    <motion.a
+                      href="https://docs.google.com/forms/d/e/1FAIpQLScDmCvkwwIrbh-bRW9OIzYDt_Uxk-GNVznykMepfrXHVjZjEg/viewform"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      whileTap={{ scale: 0.98 }}
+                      className={`w-full ${plan.buttonStyle} text-white py-6 px-8 rounded-2xl font-bold text-lg transition-all duration-300 shadow-xl hover:shadow-2xl block text-center relative overflow-hidden`}
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+                      <span className="relative z-10 flex items-center justify-center">
+                        {plan.buttonText}
+                        <ArrowRight className="w-6 h-6 ml-3" />
+                      </span>
+                    </motion.a>
+                  ) : (plan.buttonText === 'Get Early Access' || plan.buttonText === 'Contact Us') ? (
+                    // Single button with link for other sections
+                    <motion.a
+                      href="https://docs.google.com/forms/d/e/1FAIpQLScDmCvkwwIrbh-bRW9OIzYDt_Uxk-GNVznykMepfrXHVjZjEg/viewform"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className={`w-full ${plan.buttonStyle} text-white py-4 px-6 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg block text-center`}
+                    >
+                      {plan.buttonText}
+                    </motion.a>
+                  ) : (
+                    // Single button for other sections
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className={`w-full ${plan.buttonStyle} text-white py-4 px-6 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg`}
+                    >
+                      {plan.buttonText}
+                    </motion.button>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Trial Information */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.0 }}
+            viewport={{ once: true }}
+            className="text-center mt-16"
+          >
+
+          </motion.div>
+        </div>
+      </section>
+
     </Layout>
   )
 }
