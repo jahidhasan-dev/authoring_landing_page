@@ -115,7 +115,6 @@ const IndexPage = () => {
             text: 'Book Live Demo',
             style: 'bg-yellow-400 hover:bg-yellow-500 text-gray-900'
           },
-          recommended: true,
           hasTierSelector: true,
           tiers: [
             { range: '1 - 4 SDS', price: '$199' },
@@ -148,7 +147,6 @@ const IndexPage = () => {
           ],
           buttonText: 'Contact Us',
           buttonStyle: 'bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-700 hover:via-purple-700 hover:to-pink-700',
-          recommended: true,
           isContactOnly: true
         }
       ]
@@ -216,7 +214,7 @@ const IndexPage = () => {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="btn btn-primary btn-lg flex items-center bg-blue-600 text-white hover:bg-blue-700 font-semibold"
+                  className="btn btn-primary btn-lg flex items-center bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-700 hover:via-purple-700 hover:to-pink-700"
                 >
                   Get Early Access
                   <ArrowRight className="w-5 h-5 ml-2" />
@@ -364,34 +362,7 @@ const IndexPage = () => {
                 {/* Animated Background Elements */}
                 <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
-                {/* Floating Particles */}
-                <motion.div
-                  animate={{ 
-                    y: [0, 18, 0],
-                    x: [0, -12, 0],
-                    rotate: [0, 90, 180, 270, 360]
-                  }}
-                  transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute top-8 left-6 w-24 h-24 bg-gradient-to-br from-cyan-400/25 to-blue-400/25 rounded-full blur-xl"
-                />
-                <motion.div
-                  animate={{ 
-                    y: [0, -12, 0],
-                    x: [0, 8, 0],
-                    scale: [1, 0.9, 1]
-                  }}
-                  transition={{ duration: 11, repeat: Infinity, ease: "easeInOut", delay: 3 }}
-                  className="absolute bottom-20 right-8 w-16 h-16 bg-gradient-to-br from-blue-400/35 to-indigo-400/35 rounded-full blur-lg"
-                />
-                <motion.div
-                  animate={{ 
-                    y: [0, 8, 0],
-                    x: [0, -6, 0],
-                    rotate: [0, -90, -180, -270, -360]
-                  }}
-                  transition={{ duration: 16, repeat: Infinity, ease: "easeInOut", delay: 6 }}
-                  className="absolute top-48 left-10 w-12 h-12 bg-gradient-to-br from-blue-400/30 to-cyan-400/30 rounded-full blur-md"
-                />
+
                 
                 {/* Card Content */}
                 <div className="relative p-10 flex-1 flex flex-col z-10">
@@ -399,9 +370,6 @@ const IndexPage = () => {
                   <div className="relative mb-8">
                     <div className="w-20 h-20 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-3xl flex items-center justify-center shadow-2xl shadow-cyan-500/30 group-hover:shadow-cyan-500/50 transition-all duration-500">
                       <Database className="w-10 h-10 text-white" />
-                    </div>
-                    <div className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full flex items-center justify-center shadow-lg">
-                      <span className="text-xs font-bold text-white">PRO</span>
                     </div>
                     <div className="absolute -inset-2 bg-gradient-to-br from-cyan-400/20 to-blue-500/20 rounded-3xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   </div>
@@ -430,34 +398,7 @@ const IndexPage = () => {
                 {/* Animated Background Elements */}
                 <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
-                {/* Floating Particles */}
-                <motion.div
-                  animate={{ 
-                    y: [0, 18, 0],
-                    x: [0, -12, 0],
-                    rotate: [0, 90, 180, 270, 360]
-                  }}
-                  transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute top-8 left-6 w-24 h-24 bg-gradient-to-br from-indigo-400/25 to-purple-400/25 rounded-full blur-xl"
-                />
-                <motion.div
-                  animate={{ 
-                    y: [0, -12, 0],
-                    x: [0, 8, 0],
-                    scale: [1, 0.9, 1]
-                  }}
-                  transition={{ duration: 11, repeat: Infinity, ease: "easeInOut", delay: 3 }}
-                  className="absolute bottom-20 right-8 w-16 h-16 bg-gradient-to-br from-blue-400/35 to-indigo-400/35 rounded-full blur-lg"
-                />
-                <motion.div
-                  animate={{ 
-                    y: [0, 8, 0],
-                    x: [0, -6, 0],
-                    rotate: [0, -90, -180, -270, -360]
-                  }}
-                  transition={{ duration: 16, repeat: Infinity, ease: "easeInOut", delay: 6 }}
-                  className="absolute top-48 left-10 w-12 h-12 bg-gradient-to-br from-purple-400/30 to-pink-400/30 rounded-full blur-md"
-                />
+
                 
                 {/* Card Content */}
                 <div className="relative p-10 flex-1 flex flex-col z-10">
@@ -465,9 +406,6 @@ const IndexPage = () => {
                   <div className="relative mb-8">
                     <div className="w-20 h-20 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-3xl flex items-center justify-center shadow-2xl shadow-indigo-500/30 group-hover:shadow-indigo-500/50 transition-all duration-500">
                       <FileText className="w-10 h-10 text-white" />
-                    </div>
-                    <div className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-br from-indigo-400 to-purple-500 rounded-full flex items-center justify-center shadow-lg">
-                      <span className="text-xs font-bold text-white">LITE</span>
                     </div>
                     <div className="absolute -inset-2 bg-gradient-to-br from-indigo-400/20 to-purple-500/20 rounded-3xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   </div>
@@ -496,34 +434,7 @@ const IndexPage = () => {
                 {/* Animated Background Elements */}
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
-                {/* Floating Particles */}
-                <motion.div
-                  animate={{ 
-                    y: [0, 18, 0],
-                    x: [0, -12, 0],
-                    rotate: [0, 90, 180, 270, 360]
-                  }}
-                  transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute top-8 left-6 w-24 h-24 bg-gradient-to-br from-purple-400/25 to-blue-400/25 rounded-full blur-xl"
-                />
-                <motion.div
-                  animate={{ 
-                    y: [0, -12, 0],
-                    x: [0, 8, 0],
-                    scale: [1, 0.9, 1]
-                  }}
-                  transition={{ duration: 11, repeat: Infinity, ease: "easeInOut", delay: 3 }}
-                  className="absolute bottom-20 right-8 w-16 h-16 bg-gradient-to-br from-blue-400/35 to-indigo-400/35 rounded-full blur-lg"
-                />
-                <motion.div
-                  animate={{ 
-                    y: [0, 8, 0],
-                    x: [0, -6, 0],
-                    rotate: [0, -90, -180, -270, -360]
-                  }}
-                  transition={{ duration: 16, repeat: Infinity, ease: "easeInOut", delay: 6 }}
-                  className="absolute top-48 left-10 w-12 h-12 bg-gradient-to-br from-purple-400/30 to-pink-400/30 rounded-full blur-md"
-                />
+
                 
                 {/* Card Content */}
                 <div className="relative p-10 flex-1 flex flex-col z-10">
@@ -755,7 +666,7 @@ const IndexPage = () => {
               <div className="flex flex-col lg:flex-row items-center justify-center gap-3 w-full">
                 {/* Left Side - Text */}
                 <div className="text-center lg:text-left w-full lg:w-1/5">
-                  <div className="text-2xl font-bold text-slate-800 mb-2">Trusted by</div>
+                  <div className="text-2xl font-bold text-slate-800 mb-2"> <span className="text-blue-600 bg-clip-text">SDSManager</span> is trusted by</div>
                   <div className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">
                     10,000+
                   </div>
@@ -989,8 +900,8 @@ const IndexPage = () => {
                   </div>
                   
                   {/* CTA Buttons */}
-                  {plan.secondaryButton ? (
-                    // Two-button layout for Authoring Lite
+                  {plan.secondaryButton && !(plan.hasTierSelector && plan.tiers && plan.tiers[selectedTier].price === 'Custom') ? (
+                    // Two-button layout for Authoring Lite (except for Custom tier)
                     <div className="flex gap-3">
                       <motion.button
                         whileHover={{ scale: 1.02 }}
@@ -1007,8 +918,8 @@ const IndexPage = () => {
                         {plan.secondaryButton.text}
                       </motion.button>
                     </div>
-                  ) : plan.isContactOnly ? (
-                    // Eye-catching Contact Us button for SDS Services
+                  ) : plan.isContactOnly || (plan.hasTierSelector && plan.tiers && plan.tiers[selectedTier].price === 'Custom') ? (
+                    // Eye-catching Contact Us button for SDS Services and Custom tier in Author Lite
                     <motion.a
                       href="https://docs.google.com/forms/d/e/1FAIpQLScDmCvkwwIrbh-bRW9OIzYDt_Uxk-GNVznykMepfrXHVjZjEg/viewform"
                       target="_blank"
@@ -1019,7 +930,7 @@ const IndexPage = () => {
                     >
                       <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
                       <span className="relative z-10 flex items-center justify-center">
-                        {plan.buttonText}
+                        {plan.hasTierSelector && plan.tiers && plan.tiers[selectedTier].price === 'Custom' ? 'Contact Us' : plan.buttonText}
                         <ArrowRight className="w-6 h-6 ml-3" />
                       </span>
                     </motion.a>
