@@ -10,7 +10,8 @@ import {
   ArrowRight,
   Star,
   BarChart3,
-  Database
+  Database,
+  ShieldCheck
 } from "lucide-react"
 
 import Layout from "../components/layout"
@@ -214,10 +215,14 @@ const IndexPage = () => {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="btn btn-primary btn-lg flex items-center bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-700 hover:via-purple-700 hover:to-pink-700"
+                  className="btn btn-primary btn-lg flex items-center bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 hover:scale-110 relative overflow-hidden group"
                 >
+                <span className="relative z-10 flex items-center">
                   Get Early Access
-                  <ArrowRight className="w-5 h-5 ml-2" />
+                  <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" />
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                 </motion.a>
               </motion.div>
               
