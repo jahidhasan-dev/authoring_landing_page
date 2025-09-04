@@ -42,7 +42,7 @@ const IndexPage = () => {
             'SDS delivered via email after generation'
           ],
           buttonText: 'Get Early Access',
-          buttonStyle: 'bg-blue-600 hover:bg-blue-700'
+          buttonStyle: 'bg-[#5963f8] hover:bg-blue-700'
         },
         {
           name: 'Standard',
@@ -59,7 +59,7 @@ const IndexPage = () => {
             'Easier team collaboration and document control'
           ],
           buttonText: 'Get Early Access',
-          buttonStyle: 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700',
+          buttonStyle: 'bg-gradient-to-r from-[#5963f8] to-indigo-600 hover:from-blue-700 hover:to-indigo-700',
           recommended: true,
           hasTierSelector: true,
           tiers: [
@@ -87,7 +87,7 @@ const IndexPage = () => {
             'Unlimited SDS generation with premium AI suggestions',
           ],
           buttonText: 'Contact Us',
-          buttonStyle: 'bg-blue-600 hover:bg-blue-700'
+          buttonStyle: 'bg-[#5963f8] hover:bg-blue-700'
         }
       ]
     },
@@ -147,7 +147,7 @@ const IndexPage = () => {
             'Ongoing maintenance and updates'
           ],
           buttonText: 'Contact Us',
-          buttonStyle: 'bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-700 hover:via-purple-700 hover:to-pink-700',
+          buttonStyle: 'bg-gradient-to-r from-[#5963f8] via-purple-600 to-pink-600 hover:from-blue-700 hover:via-purple-700 hover:to-pink-700',
           isContactOnly: true
         }
       ]
@@ -178,9 +178,9 @@ const IndexPage = () => {
                 transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
                 className="mb-6"
               >
-                <div className="inline-flex items-center px-4 py-2 bg-blue-600/10 backdrop-blur-sm rounded-full border border-blue-600/20 mb-6">
-                  <Star className="w-4 h-4 text-blue-600 mr-2" />
-                  <span className="text-sm font-medium text-blue-600">SDS AUTHORING SOFTWARE</span>
+                <div className="inline-flex items-center px-4 py-2 bg-[#5963f8]/10 backdrop-blur-sm rounded-full border border-[#5963f8]/20 mb-6">
+                  <Star className="w-4 h-4 text-[#5963f8] mr-2" />
+                  <span className="text-sm font-medium text-[#5963f8]">SDS AUTHORING SOFTWARE</span>
                 </div>
               </motion.div>
               
@@ -215,13 +215,13 @@ const IndexPage = () => {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="btn btn-primary btn-lg flex items-center bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 hover:scale-110 relative overflow-hidden group"
+                  className="btn btn-primary btn-lg flex items-center bg-gradient-to-r from-[#5963f8] via-purple-600 to-pink-600 hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 hover:scale-110 relative overflow-hidden group"
                 >
                 <span className="relative z-10 flex items-center">
                   Get Early Access
                   <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" />
                 </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-[#5963f8] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                 </motion.a>
               </motion.div>
@@ -322,9 +322,9 @@ const IndexPage = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600/10 to-cyan-600/10 text-blue-600 rounded-full mb-8 border border-blue-600/20 backdrop-blur-md shadow-lg"
+              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#5963f8]/10 to-cyan-600/10 text-[#5963f8] rounded-full mb-8 border border-[#5963f8]/20 backdrop-blur-md shadow-lg"
             >
-              <Zap className="w-6 h-6 mr-3 text-blue-600" />
+              <Zap className="w-6 h-6 mr-3 text-[#5963f8]" />
               <span className="font-bold text-lg tracking-wide">OUR PRODUCTS</span>
             </motion.div>
             
@@ -336,7 +336,7 @@ const IndexPage = () => {
               className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6"
             >
               Choose the{" "}
-              <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#5963f8] via-indigo-600 to-purple-600 bg-clip-text text-transparent">
                 Perfect Solution
               </span>
             </motion.h2>
@@ -373,7 +373,7 @@ const IndexPage = () => {
                 <div className="relative p-10 flex-1 flex flex-col z-10">
                   {/* Enhanced Icon with Glow */}
                   <div className="relative mb-8">
-                    <div className="w-20 h-20 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-3xl flex items-center justify-center shadow-2xl shadow-cyan-500/30 group-hover:shadow-cyan-500/50 transition-all duration-500">
+                    <div className="w-20 h-20 bg-gradient-to-br from-cyan-500 to-[#5963f8] rounded-3xl flex items-center justify-center shadow-2xl shadow-cyan-500/30 group-hover:shadow-cyan-500/50 transition-all duration-500">
                       <Database className="w-10 h-10 text-white" />
                     </div>
                     <div className="absolute -inset-2 bg-gradient-to-br from-cyan-400/20 to-blue-500/20 rounded-3xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -445,7 +445,7 @@ const IndexPage = () => {
                 <div className="relative p-10 flex-1 flex flex-col z-10">
                   {/* Enhanced Icon with Glow */}
                   <div className="relative mb-8">
-                    <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-blue-600 rounded-3xl flex items-center justify-center shadow-2xl shadow-purple-500/30 group-hover:shadow-purple-500/50 transition-all duration-500">
+                    <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-[#5963f8] rounded-3xl flex items-center justify-center shadow-2xl shadow-purple-500/30 group-hover:shadow-purple-500/50 transition-all duration-500">
                       <Users className="w-10 h-10 text-white" />
                     </div>
                     <div className="absolute -inset-2 bg-gradient-to-br from-purple-400/20 to-blue-500/20 rounded-3xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -487,7 +487,7 @@ const IndexPage = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={certificationInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white rounded-2xl mb-8 shadow-xl border border-indigo-500/20"
+              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#5963f8] via-indigo-600 to-purple-600 text-white rounded-2xl mb-8 shadow-xl border border-indigo-500/20"
             >
               <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-3">
                 <Shield className="w-5 h-5 text-white" />
@@ -502,7 +502,7 @@ const IndexPage = () => {
               className="text-4xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight"
             >
               Trusted by{" "}
-              <span className="text-blue-600 bg-clip-text">
+              <span className="text-[#5963f8] bg-clip-text">
                 Industry Leaders
               </span>
             </motion.h2>
@@ -514,9 +514,9 @@ const IndexPage = () => {
               className="text-xl text-slate-700 max-w-3xl mx-auto leading-relaxed font-medium"
             >
               Our platform meets the{" "}
-              <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent font-bold">highest international standards</span> with{" "}
-              <span className="bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent font-bold">four critical ISO certifications</span> ensuring{" "}
-              <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent font-bold">comprehensive security and quality</span>
+              <span className="bg-gradient-to-r from-[#5963f8] to-blue-800 bg-clip-text text-transparent font-bold">highest international standards</span> with{" "}
+              <span className="bg-gradient-to-r from-indigo-600 to-[#5963f8] bg-clip-text text-transparent font-bold">four critical ISO certifications</span> ensuring{" "}
+              <span className="bg-gradient-to-r from-[#5963f8] to-indigo-600 bg-clip-text text-transparent font-bold">comprehensive security and quality</span>
             </motion.p>
           </motion.div>
 
@@ -671,7 +671,7 @@ const IndexPage = () => {
               <div className="flex flex-col lg:flex-row items-center justify-center gap-3 w-full">
                 {/* Left Side - Text */}
                 <div className="text-center lg:text-left w-full lg:w-1/5">
-                  <div className="text-2xl font-bold text-slate-800 mb-2"> <span className="text-blue-600 bg-clip-text">SDSManager</span> is trusted by</div>
+                  <div className="text-2xl font-bold text-slate-800 mb-2"> <span className="text-[#5963f8] bg-clip-text">SDSManager</span> is trusted by</div>
                   <div className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">
                     10,000+
                   </div>
@@ -743,7 +743,7 @@ const IndexPage = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className="inline-flex items-center px-6 py-3 bg-blue-600/10 text-blue-600 rounded-full mb-6 border border-blue-600/20 backdrop-blur-sm"
+              className="inline-flex items-center px-6 py-3 bg-[#5963f8]/10 text-[#5963f8] rounded-full mb-6 border border-[#5963f8]/20 backdrop-blur-sm"
             >
               <BarChart3 className="w-5 h-5 mr-2" />
               <span className="font-semibold">PRICING PLANS</span>
@@ -757,7 +757,7 @@ const IndexPage = () => {
               className="text-3xl lg:text-5xl font-bold text-gray-900 mb-4"
             >
               Choose Your{" "}
-              <span className="text-blue-600">
+              <span className="text-[#5963f8]">
                 Perfect Plan
               </span>
             </motion.h2>
@@ -806,7 +806,7 @@ const IndexPage = () => {
                     {activePricingPanel === product.id && (
                       <motion.div
                         layoutId="activeTab"
-                        className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl shadow-lg"
+                        className="absolute inset-0 bg-gradient-to-r from-[#5963f8] to-indigo-600 rounded-xl shadow-lg"
                         initial={false}
                         transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                       />

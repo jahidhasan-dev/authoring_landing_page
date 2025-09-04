@@ -50,10 +50,10 @@ const Header = ({ siteTitle }) => {
             className="flex items-center"
           >
             <Link to="/" className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-gradient-to-br from-[#5963f8] to-blue-800 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-xl">S</span>
               </div>
-              <span className="text-xl lg:text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+              <span className="text-xl lg:text-2xl font-bold bg-gradient-to-r from-[#5963f8] to-blue-800 bg-clip-text text-transparent">
                 SDS Authoring
               </span>
             </Link>
@@ -66,10 +66,10 @@ const Header = ({ siteTitle }) => {
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
                 whileHover={{ y: -2 }}
-                className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 relative group bg-transparent border-none cursor-pointer"
+                className="text-gray-700 hover:text-[#5963f8] font-medium transition-colors duration-200 relative group bg-transparent border-none cursor-pointer"
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#5963f8] transition-all duration-300 group-hover:w-full"></span>
               </motion.button>
             ))}
           </nav>
@@ -79,14 +79,14 @@ const Header = ({ siteTitle }) => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-6 py-2.5 text-gray-700 font-medium hover:text-blue-600 transition-colors duration-200 bg-transparent border-none cursor-pointer"
+              className="px-6 py-2.5 text-gray-700 font-medium hover:text-[#5963f8] transition-colors duration-200 bg-transparent border-none cursor-pointer"
             >
               Sign In
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-medium rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-200 shadow-lg hover:shadow-xl border-none cursor-pointer"
+              className="px-6 py-2.5 bg-gradient-to-r from-[#5963f8] to-blue-700 text-white font-medium rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-200 shadow-lg hover:shadow-xl border-none cursor-pointer"
             >
               Start Free Trial
             </motion.button>
@@ -95,7 +95,7 @@ const Header = ({ siteTitle }) => {
           {/* Mobile menu button */}
           <motion.button
             whileTap={{ scale: 0.95 }}
-            className="lg:hidden p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100 transition-colors duration-200 bg-transparent border-none cursor-pointer"
+            className="lg:hidden p-2 rounded-md text-gray-700 hover:text-[#5963f8] hover:bg-gray-100 transition-colors duration-200 bg-transparent border-none cursor-pointer"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -118,16 +118,16 @@ const Header = ({ siteTitle }) => {
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="block text-gray-700 hover:text-blue-600 font-medium py-2 transition-colors duration-200 bg-transparent border-none cursor-pointer w-full text-left"
+                className="block text-gray-700 hover:text-[#5963f8] font-medium py-2 transition-colors duration-200 bg-transparent border-none cursor-pointer w-full text-left"
               >
                 {item.name}
               </button>
             ))}
             <div className="pt-4 space-y-3">
-              <button className="w-full px-4 py-2 text-gray-700 font-medium hover:text-blue-600 transition-colors duration-200 bg-transparent border-none cursor-pointer">
+              <button className="w-full px-4 py-2 text-gray-700 font-medium hover:text-[#5963f8] transition-colors duration-200 bg-transparent border-none cursor-pointer">
                 Sign In
               </button>
-              <button className="w-full px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-medium rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-200 border-none cursor-pointer">
+              <button className="w-full px-4 py-2 bg-gradient-to-r from-[#5963f8] to-blue-700 text-white font-medium rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-200 border-none cursor-pointer">
                 Start Free Trial
               </button>
             </div>
