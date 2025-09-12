@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Modern SDS Authoring Landing Page Styles */
+/* Clean, minimal styles for SDS Authoring Landing Page */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 @layer base {
@@ -20,51 +20,5 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     line-height: 1.6;
-  }
-}
-
-@layer utilities {
-  .hero {
-    @apply relative overflow-hidden;
-    background: linear-gradient(100deg, #b6c9fb 0%, #ffffff 50%, #b6c9fb 100%);
-  }
-}
-
-@layer components {
-  .btn {
-    @apply inline-flex items-center justify-center px-6 py-3 font-medium rounded-lg transition-all duration-200 ease-in-out no-underline border-none cursor-pointer text-base leading-normal;
-  }
-
-  .btn-primary {
-    @apply bg-gradient-to-r from-primary-600 to-primary-700 text-white shadow-lg;
-  }
-
-  .btn-primary:hover {
-    @apply -translate-y-0.5 shadow-xl;
-  }
-
-  .btn-lg {
-    @apply px-8 py-4 text-lg;
-  }
-}
-
-@layer utilities {
-  @media (min-width: 1024px) {
-    .hero .grid {
-      @apply items-stretch;
-    }
-    
-    .hero .grid > div:first-child {
-      @apply h-auto flex flex-col justify-center;
-    }
-    
-    .hero .grid > div:last-child {
-      @apply h-auto flex items-center justify-center;
-    }
-    
-    /* Ensure video container matches text height */
-    .hero .grid > div:last-child > div {
-      @apply h-full max-h-80 min-h-72;
-    }
   }
 }

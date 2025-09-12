@@ -27,7 +27,7 @@ const Layout = ({ children }) => {
       <div className="pt-16 lg:pt-20">
         <main>{children}</main>
         <footer className="bg-gray-900 text-white py-16 mt-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto px-2 sm:px-4 lg:px-6">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               <div className="col-span-1 md:col-span-2">
                 <div className="flex items-center space-x-2 mb-6">

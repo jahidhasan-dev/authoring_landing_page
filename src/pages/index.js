@@ -11,7 +11,8 @@ import {
   Star,
   BarChart3,
   Database,
-  ShieldCheck
+  ShieldCheck,
+  Settings
 } from "lucide-react"
 
 import Layout from "../components/layout"
@@ -22,6 +23,7 @@ const IndexPage = () => {
   const [certificationRef, certificationInView] = useInView({ threshold: 0.1, triggerOnce: true })
   const [activePricingPanel, setActivePricingPanel] = React.useState('exactsds')
   const [selectedTier, setSelectedTier] = React.useState(0)
+  const [showVideo, setShowVideo] = React.useState(false)
 
   // Pricing data for each product
   const pricingData = {
@@ -157,382 +159,470 @@ const IndexPage = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section ref={heroRef} className="hero py-16 lg:py-20 relative">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={heroInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-stretch min-h-[400px] lg:min-h-[450px]"
-          >
+      <section ref={heroRef} className="bg-white py-15 lg:py-20 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left Side - Text Content */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={heroInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              className="text-left h-full flex flex-col justify-center"
-            >
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={heroInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-                className="mb-6"
-              >
-                <div className="inline-flex items-center px-4 py-2 bg-[#5963f8]/10 backdrop-blur-sm rounded-full border border-[#5963f8]/20 mb-6">
-                  <Star className="w-4 h-4 text-[#5963f8] mr-2" />
-                  <span className="text-sm font-medium text-[#5963f8]">SDS AUTHORING SOFTWARE</span>
+            <div className="text-left">
+              {/* Badge */}
+              <div className="mb-8">
+                <div className="inline-flex items-center px-6 py-3 bg-[#5963f8]/10 backdrop-blur-sm rounded-full border border-[#5963f8]/20">
+                  <Star className="w-5 h-5 text-[#5963f8] mr-3" />
+                  <span className="text-sm font-semibold text-[#5963f8] tracking-wide">SDS AUTHORING SOFTWARE</span>
                 </div>
-              </motion.div>
+              </div>
               
-              <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={heroInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-                className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-gray-900"
-              >
-                Create your own
-                  SDS today!
-              </motion.h1>
+              {/* Main Headline */}
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-[1.1] mb-8 text-gray-900 text-spacing-wide">
+              Smarter, Faster SDS Authoring for Global Compliance
+              </h1>
               
-              <motion.p
-                initial={{ opacity: 0, y: 30 }}
-                animate={heroInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-                className="text-xl lg:text-2xl text-gray-700 mb-8 leading-relaxed"
-              >
-                Use our SDS authoring to support you in creating, maintaining, and distributing compliant Safety Data Sheets (SDS) for free.
-              </motion.p>
+              {/* Sub-headline */}
+              <p className="text-sm lg:text-lg text-gray-600 mb-12 leading-relaxed max-w-2xl">
+                Create professional, regulation-ready Safety Data Sheets in minutes — not hours. Stay ahead of changing legislation with automation you can trust.
+              </p>
               
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={heroInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-                className="flex flex-col sm:flex-row gap-4 items-endb"
-              >
-                <motion.a
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a
+                  href="https://exactsds.sdsmanager.com/login"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center bg-[#5963f8] hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                >
+                  Start free Trial
+                  <ArrowRight className="ml-3 w-6 h-6" />
+                </a>
+                <a
                   href="https://docs.google.com/forms/d/e/1FAIpQLScDmCvkwwIrbh-bRW9OIzYDt_Uxk-GNVznykMepfrXHVjZjEg/viewform"
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="btn btn-primary btn-lg flex items-center bg-gradient-to-r from-[#5963f8] via-purple-600 to-pink-600 hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 hover:scale-110 relative overflow-hidden group"
+                  className="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-gray-900 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-gray-200 hover:border-gray-300 transform hover:-translate-y-1"
                 >
-                <span className="relative z-10 flex items-center">
-                  Get Early Access
-                  <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" />
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-[#5963f8] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                </motion.a>
-              </motion.div>
-              
-            </motion.div>
+                  Book a demo
+                </a>
+              </div>
+            </div>
 
-            {/* Right Side - Video */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={heroInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-              className="relative h-full flex items-center justify-center"
-            >
-              {/* Video Container with Clean Styling */}
-              <div className="relative rounded-2xl overflow-hidden shadow-lg w-full h-full max-h-[320px] min-h-[280px] bg-white">
-                {/* Video Frame */}
-                <div className="relative w-full h-full">
+            {/* Right Side - Video Thumbnail */}
+            <div className="relative h-full flex items-center justify-center">
+              {/* Decorative Elements Outside Video - All Four Sides */}
+              {/* Top-left gradient */}
+              <div className="absolute -top-4 -left-4 w-32 h-32 bg-gradient-to-br from-[#5963f8]/10 via-[#5963f8]/5 to-transparent rounded-2xl z-10"></div>
+              
+              {/* Top-right gradient */}
+              <div className="absolute -top-4 -right-4 w-32 h-32 bg-gradient-to-bl from-[#5963f8]/10 via-[#5963f8]/5 to-transparent rounded-2xl z-10"></div>
+              
+              {/* Bottom-left gradient */}
+              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-tr from-[#5963f8]/10 via-[#5963f8]/5 to-transparent rounded-2xl z-10"></div>
+              
+              {/* Bottom-right gradient */}
+              <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-gradient-to-tl from-[#5963f8]/10 via-[#5963f8]/5 to-transparent rounded-2xl z-10"></div>
+              
+              {/* Additional accent elements - All corners */}
+              <div className="absolute -top-2 -left-2 w-6 h-6 bg-[#5963f8]/15 rounded-full blur-sm z-10"></div>
+              <div className="absolute -top-2 -right-2 w-6 h-6 bg-[#5963f8]/15 rounded-full blur-sm z-10"></div>
+              <div className="absolute -bottom-2 -left-2 w-6 h-6 bg-[#5963f8]/15 rounded-full blur-sm z-10"></div>
+              <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-[#5963f8]/15 rounded-full blur-sm z-10"></div>
+              
+              {/* Side accent elements */}
+              <div className="absolute top-1/2 -left-2 w-4 h-4 bg-[#5963f8]/12 rounded-full blur-sm z-10"></div>
+              <div className="absolute top-1/2 -right-2 w-4 h-4 bg-[#5963f8]/12 rounded-full blur-sm z-10"></div>
+              <div className="absolute -top-2 left-1/2 w-4 h-4 bg-[#5963f8]/12 rounded-full blur-sm z-10"></div>
+              <div className="absolute -bottom-2 left-1/2 w-4 h-4 bg-[#5963f8]/12 rounded-full blur-sm z-10"></div>
+              
+              {!showVideo ? (
+                /* Video Thumbnail Container */
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl w-full h-full max-h-[450px] min-h-[380px] z-20">
+                  {/* Thumbnail Image */}
+                  <img 
+                    src={require("../images/thumbnail.png").default} 
+                    alt="SDS Manager Video Thumbnail"
+                    className="w-full h-full object-cover"
+                  />
+                  
+                  {/* Play Button Overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/2">
+                    <button 
+                      onClick={() => setShowVideo(true)}
+                      className="group bg-white/95 hover:bg-white rounded-2xl px-8 py-4 shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105 flex items-center space-x-4"
+                    >
+                      {/* Play Icon */}
+                      <div className="w-16 h-16 bg-[#5963f8] rounded-full flex items-center justify-center group-hover:bg-blue-700 transition-colors duration-300">
+                        <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z"/>
+                        </svg>
+                      </div>
+                      
+                      {/* Text */}
+                      <div className="text-left">
+                        <div className="text-lg font-bold text-gray-900 group-hover:text-[#5963f8] transition-colors duration-300">
+                          How ExactSDS Works
+                        </div>
+                        <div className="text-sm text-gray-600">Watch our demo video</div>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                /* Video Player */
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl w-full h-full max-h-[450px] min-h-[380px] bg-white z-20">
                   <iframe
-                    src="https://www.youtube.com/embed/wQnDf-74ysY?start=3&autoplay=0&rel=0&modestbranding=1&showinfo=0&controls=1"
+                    src="https://www.youtube.com/embed/wQnDf-74ysY?start=3&autoplay=1&rel=0&modestbranding=1&showinfo=0&controls=1"
                     title="Introduction to SDS Manager"
-                    className="w-full h-full"
+                    className="w-full h-full rounded-2xl"
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                   ></iframe>
+                  
+                  {/* Close Button */}
+                  <button
+                    onClick={() => setShowVideo(false)}
+                    className="absolute top-4 right-4 w-8 h-8 bg-black/70 hover:bg-black text-white rounded-full flex items-center justify-center transition-colors duration-300"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+
+
+          {/* Features Section */}
+          <div className="mt-16 mb-8" style={{ marginTop: '6.5rem' }}>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* Feature 1 */}
+              <div className="flex items-start gap-4">
+                {/* Icon on the left */}
+                <div className="flex-shrink-0 mt-1">
+                  <CheckCircle className="w-6 h-6 text-blue-500" />
                 </div>
                 
-                {/* Simple Video Overlay */}
-                <div className="absolute top-4 left-4">
-                  <div className="bg-black/70 backdrop-blur-sm rounded-lg px-3 py-2">
-                    <div className="text-xs text-gray-300 mb-1">1 minute</div>
-                    <div className="text-sm font-medium text-white">Introduction to SDS Manager</div>
-                  </div>
-                </div>
-                
-                {/* Bottom Branding */}
-                <div className="absolute bottom-4 left-4">
-                  <div className="bg-black/70 backdrop-blur-sm rounded-lg px-3 py-1">
-                    <span className="text-xs text-gray-300">www.sdsmanager.com</span>
-                  </div>
+                {/* Content on the right */}
+                <div className="flex-1">
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">
+                    Fast, Accurate, and Globally Compliant SDSs
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    Create regulation-ready Safety Data Sheets for 80+ markets in just minutes.
+                  </p>
                 </div>
               </div>
-            </motion.div>
-          </motion.div>
-        </div>
-        
 
+              {/* Feature 2 */}
+              <div className="flex items-start gap-4">
+                {/* Icon on the left */}
+                <div className="flex-shrink-0 mt-1">
+                  <CheckCircle className="w-6 h-6 text-blue-500" />
+                </div>
+                
+                {/* Content on the right */}
+                <div className="flex-1">
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">
+                    Effortless Compliance, Worldwide
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    Easily create high-quality SDSs that meet regulations in 80+ countries.
+                  </p>
+                </div>
+              </div>
+
+              {/* Feature 3 */}
+              <div className="flex items-start gap-4">
+                {/* Icon on the left */}
+                <div className="flex-shrink-0 mt-1">
+                  <CheckCircle className="w-6 h-6 text-blue-500" />
+                </div>
+                
+                {/* Content on the right */}
+                <div className="flex-1">
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">
+                    AI-Powered SDS Intelligence
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    Trained on 16M SDSs with 2.4B parameters for smarter, faster compliance.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* Trusted by Section */}
+      <section className="bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-3 w-full">
+            {/* Left Side - Text */}
+            <div className="text-center lg:text-left w-full lg:w-1/5">
+              <div className="text-2xl font-bold text-slate-800 mb-2"> <span className="text-[#5963f8] bg-clip-text">SDSManager</span> is trusted by</div>
+              <div className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">
+                10,000+
+              </div>
+              <div className="text-2xl font-bold text-slate-800">Safety Managers</div>
+            </div>
+            
+            {/* Right Side - Company Logos */}
+            <div className="flex items-center justify-center w-full lg:w-4/5">
+              {/* Unilever */}
+              <div className="flex items-center justify-center w-1/5 h-24">
+                <img 
+                  src={require("../images/unilever.png").default} 
+                  alt="Unilever"
+                  className="max-h-full max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
+                  style={{ maxHeight: '90px' }}
+                />
+              </div>
+              
+              {/* DeLonghi */}
+              <div className="flex items-center justify-center w-1/5 h-24">
+                <img 
+                  src={require("../images/delonghi.png").default} 
+                  alt="DeLonghi"
+                  className="max-h-full max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
+                  style={{ maxHeight: '90px' }}
+                />
+              </div>
+              
+              {/* THULE */}
+              <div className="flex items-center justify-center w-1/5 h-24">
+                <img 
+                  src={require("../images/thule.png").default} 
+                  alt="THULE"
+                  className="max-h-full max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
+                  style={{ maxHeight: '90px' }}
+                />
+              </div>
+              
+              {/* DHL */}
+              <div className="flex items-center justify-center w-1/5 h-24">
+                <img 
+                  src={require("../images/DHL-Emblem.png").default} 
+                  alt="DHL"
+                  className="max-h-full max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
+                  style={{ maxHeight: '90px' }}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Products Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden">
-        {/* Advanced Background Effects */}
-        <div className="absolute inset-0">
-          {/* Animated Grid Pattern */}
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:50px_50px] animate-pulse"></div>
-          
-          {/* Floating Orbs */}
-          <motion.div
-            animate={{ 
-              x: [0, 100, 0],
-              y: [0, -50, 0],
-              scale: [1, 1.2, 1]
-            }}
-            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-blue-200/30 to-cyan-200/30 rounded-full blur-3xl"
-          />
-          <motion.div
-            animate={{ 
-              x: [0, -80, 0],
-              y: [0, 60, 0],
-              scale: [1, 0.8, 1]
-            }}
-            transition={{ duration: 25, repeat: Infinity, ease: "easeInOut", delay: 5 }}
-            className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-indigo-200/30 to-purple-200/30 rounded-full blur-3xl"
-          />
-          <motion.div
-            animate={{ 
-              x: [0, 60, 0],
-              y: [0, -40, 0],
-              scale: [1, 1.1, 1]
-            }}
-            transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 10 }}
-            className="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-to-br from-cyan-200/25 to-blue-200/25 rounded-full blur-3xl"
-          />
-        </div>
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <section className="py-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#5963f8]/10 to-cyan-600/10 text-[#5963f8] rounded-full mb-8 border border-[#5963f8]/20 backdrop-blur-md shadow-lg"
-            >
-              <Zap className="w-6 h-6 mr-3 text-[#5963f8]" />
-              <span className="font-bold text-lg tracking-wide">OUR PRODUCTS</span>
-            </motion.div>
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center px-4 py-2 bg-[#5963f8]/10 rounded-full border border-[#5963f8]/20 mb-6">
+              <Zap className="w-4 h-4 mr-2 text-[#5963f8]" />
+              <span className="font-medium text-sm text-[#5963f8] tracking-wide">OUR PRODUCTS</span>
+            </div>
             
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6"
-            >
+            <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-6">
               Choose the{" "}
-              <span className="bg-gradient-to-r from-[#5963f8] via-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                Perfect Solution
-              </span>
-            </motion.h2>
+              <span className="text-[#5963f8]">Perfect Solution</span>
+            </h2>
             
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
-            >
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               From AI-powered creation to professional services, we have the right tool for every SDS need.
-            </motion.p>
-          </motion.div>
+            </p>
+          </div>
 
           {/* Products Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             
             {/* Product 1: ExactSDS */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              viewport={{ once: true }}
-              className="group h-full"
-            >
-              <div className="relative bg-white/90 backdrop-blur-xl rounded-3xl overflow-hidden shadow-2xl hover:shadow-cyan-500/25 transition-all duration-700 transform hover:-translate-y-3 hover:scale-105 h-full flex flex-col border border-gray-200/50">
-                {/* Animated Background Elements */}
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                
-
-                
-                {/* Card Content */}
-                <div className="relative p-10 flex-1 flex flex-col z-10">
-                  {/* Enhanced Icon with Glow */}
-                  <div className="relative mb-8">
-                    <div className="w-20 h-20 bg-gradient-to-br from-cyan-500 to-[#5963f8] rounded-3xl flex items-center justify-center shadow-2xl shadow-cyan-500/30 group-hover:shadow-cyan-500/50 transition-all duration-500">
-                      <Database className="w-10 h-10 text-white" />
-                    </div>
-                    <div className="absolute -inset-2 bg-gradient-to-br from-cyan-400/20 to-blue-500/20 rounded-3xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="group">
+              <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 h-full flex flex-col border border-gray-100">
+                <div className="p-8 flex-1 flex flex-col">
+                  {/* Icon */}
+                  <div className="w-16 h-16 bg-gradient-to-br from-cyan-500 to-[#5963f8] rounded-xl flex items-center justify-center mb-6">
+                    <Database className="w-8 h-8 text-white" />
                   </div>
                   
                   {/* Title & Description */}
-                  <h3 className="text-3xl font-bold text-gray-900 mb-4 group-hover:text-cyan-600 transition-colors duration-300">ExactSDS</h3>
-                  <p className="text-gray-600 leading-relaxed text-lg">
-                    Create SDSs for your own unique chemical mixtures in minutes with our AI-powered Authoring tool. It automatically applies GHS classifications, checks against current regulations, and builds a complete, editable SDS in minutes.
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">ExactSDS</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Create SDSs for unique chemical mixtures with AI-powered authoring. Automatically applies GHS classifications and regulatory checks.
                   </p>
                 </div>
-                
-                {/* Corner Glow Effect */}
-                <div className="absolute top-0 right-0 w-0 h-0 border-l-[80px] border-l-transparent border-t-[80px] border-t-cyan-500/20"></div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Product 2: Author Lite */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.7 }}
-              viewport={{ once: true }}
-              className="group h-full"
-            >
-              <div className="relative bg-white/90 backdrop-blur-xl rounded-3xl overflow-hidden shadow-2xl hover:shadow-indigo-500/25 transition-all duration-700 transform hover:-translate-y-3 hover:scale-105 h-full flex flex-col border border-gray-200/50">
-                {/* Animated Background Elements */}
-                <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                
-
-                
-                {/* Card Content */}
-                <div className="relative p-10 flex-1 flex flex-col z-10">
-                  {/* Enhanced Icon with Glow */}
-                  <div className="relative mb-8">
-                    <div className="w-20 h-20 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-3xl flex items-center justify-center shadow-2xl shadow-indigo-500/30 group-hover:shadow-indigo-500/50 transition-all duration-500">
-                      <FileText className="w-10 h-10 text-white" />
-                    </div>
-                    <div className="absolute -inset-2 bg-gradient-to-br from-indigo-400/20 to-purple-500/20 rounded-3xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="group">
+              <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 h-full flex flex-col border border-gray-100">
+                <div className="p-8 flex-1 flex flex-col">
+                  {/* Icon */}
+                  <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center mb-6">
+                    <FileText className="w-8 h-8 text-white" />
                   </div>
                   
                   {/* Title & Description */}
-                  <h3 className="text-3xl font-bold text-gray-900 mb-4 group-hover:text-indigo-600 transition-colors duration-300">Author Lite</h3>
-                  <p className="text-gray-600 leading-relaxed text-lg">
-                    Author Lite is a fast, flexible way to revise and update existing Safety Data Sheets. It is designed to help your team edit, customize, and bring your SDSs up to date.
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">Author Lite</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Fast, flexible way to revise and update existing Safety Data Sheets. Edit, customize, and bring your SDSs up to date.
                   </p>
                 </div>
-                
-                {/* Corner Glow Effect */}
-                <div className="absolute top-0 right-0 w-0 h-0 border-l-[80px] border-l-transparent border-t-[80px] border-t-indigo-500/20"></div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Product 3: SDS Service */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.9 }}
-              viewport={{ once: true }}
-              className="group h-full"
-            >
-              <div className="relative bg-white/90 backdrop-blur-xl rounded-3xl overflow-hidden shadow-2xl hover:shadow-purple-500/25 transition-all duration-700 transform hover:-translate-y-3 hover:scale-105 h-full flex flex-col border border-gray-200/50">
-                {/* Animated Background Elements */}
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                
-
-                
-                {/* Card Content */}
-                <div className="relative p-10 flex-1 flex flex-col z-10">
-                  {/* Enhanced Icon with Glow */}
-                  <div className="relative mb-8">
-                    <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-[#5963f8] rounded-3xl flex items-center justify-center shadow-2xl shadow-purple-500/30 group-hover:shadow-purple-500/50 transition-all duration-500">
-                      <Users className="w-10 h-10 text-white" />
-                    </div>
-                    <div className="absolute -inset-2 bg-gradient-to-br from-purple-400/20 to-blue-500/20 rounded-3xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="group">
+              <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 h-full flex flex-col border border-gray-100">
+                <div className="p-8 flex-1 flex flex-col">
+                  {/* Icon */}
+                  <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-[#5963f8] rounded-xl flex items-center justify-center mb-6">
+                    <Users className="w-8 h-8 text-white" />
                   </div>
                   
                   {/* Title & Description */}
-                  <h3 className="text-3xl font-bold text-gray-900 mb-4 group-hover:text-purple-600 transition-colors duration-300">SDS Service</h3>
-                  <p className="text-gray-600 leading-relaxed text-lg">
-                    Our SDS service will create your SDS for you. Contact us and our team will create a fully compliant Safety Data Sheet which is accurate, regulation-checked, and ready to distribute.
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">SDS Service</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Our team creates fully compliant Safety Data Sheets that are accurate, regulation-checked, and ready to distribute.
                   </p>
                 </div>
-                
-                {/* Corner Glow Effect */}
-                <div className="absolute top-0 right-0 w-0 h-0 border-l-[80px] border-l-transparent border-t-[80px] border-t-purple-500/20"></div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
 
+      {/* Tools Section */}
+      <section className="py-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="text-center mb-12">
+          <div className="inline-flex items-center px-4 py-2 bg-[#5963f8]/10 rounded-full border border-[#5963f8]/20 mb-6">
+              <Settings className="w-4 h-4 mr-2 text-[#5963f8]" />
+              <span className="font-medium text-sm text-[#5963f8] tracking-wide">Authoring Tools</span>
+            </div>
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              Tools Designed to{" "}
+              <span className="text-[#5963f8]">Simplify SDS Creation</span>
+            </h2>
+            
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Keeping SDSs compliant often requires hours of tracking chemical updates and shifting regulations. Our ISO 9001–certified platform simplifies the process so you can focus less on paperwork and more on productivity — while ensuring accuracy every time.
+            </p>
+          </div>
+
+          {/* Features Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            {/* Feature 1 */}
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-8 bg-purple-100 border border-purple-200 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-purple-600 font-semibold text-xs">DB</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-bold text-gray-900 mb-2 text-base">Access Over 122M Substances</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">
+                    Tap into one of the largest chemical databases to ensure accuracy and up-to-date classifications.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Feature 2 */}
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-8 bg-teal-100 border border-teal-200 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-teal-600 font-semibold text-xs">SDS</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-bold text-gray-900 mb-2 text-base">16M SDS Records at Your Fingertips</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">
+                    Leverage insights from a massive SDS database to improve accuracy and speed.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Feature 3 */}
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-8 bg-yellow-100 border border-yellow-200 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-yellow-600 font-semibold text-xs">TRK</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-bold text-gray-900 mb-2 text-base">Stay on Top of Every Change</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">
+                    Track updates seamlessly with built-in version history and compliance-ready audit trails.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Feature 4 */}
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-8 bg-purple-100 border border-purple-200 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-purple-600 font-semibold text-xs">LNG</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-bold text-gray-900 mb-2 text-base">Instant SDS Translation in 39 Languages</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">
+                    Automatically translate extracted text for global markets without losing accuracy.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Feature 5 */}
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200">
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-8 bg-teal-100 border border-teal-200 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-teal-600 font-semibold text-xs">LBL</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-bold text-gray-900 mb-2 text-base">Create Compliant Labels in One Click</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">
+                    Turn SDS data into ready-to-print, regulation-compliant labels instantly.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Empty space for better grid layout */}
+            <div className="hidden lg:block"></div>
+          </div>
+        </div>
+      </section>
 
       {/* Certification Section */}
-      <section ref={certificationRef} className="py-16 bg-gradient-to-br from-slate-50 via-blue-50 to-slate-50 relative overflow-hidden">
-        {/* Elegant background elements */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.06),transparent_50%)]"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(212,175,55,0.04),transparent_50%)]"></div>
-        <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-blue-500/3 to-amber-500/3 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-br from-amber-500/3 to-blue-500/3 rounded-full blur-3xl"></div>
-        
+      <section ref={certificationRef} className="py-12 bg-gray-50 relative">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={certificationInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={certificationInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#5963f8] via-indigo-600 to-purple-600 text-white rounded-2xl mb-8 shadow-xl border border-indigo-500/20"
-            >
-              <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-3">
-                <Shield className="w-5 h-5 text-white" />
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center px-6 py-3 bg-[#5963f8] text-white rounded-xl mb-6">
+              <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center mr-2">
+                <Shield className="w-4 h-4 text-white" />
               </div>
-              <span className="font-bold tracking-wider text-sm uppercase">INTERNATIONAL STANDARDS</span>
-            </motion.div>
+              <span className="font-bold tracking-wider text-xs uppercase">INTERNATIONAL STANDARDS</span>
+            </div>
             
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              animate={certificationInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-4xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight"
-            >
+            <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 mb-4 leading-tight">
               Trusted by{" "}
-              <span className="text-[#5963f8] bg-clip-text">
-                Industry Leaders
-              </span>
-            </motion.h2>
+              <span className="text-[#5963f8]">Industry Leaders</span>
+            </h2>
             
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={certificationInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-xl text-slate-700 max-w-3xl mx-auto leading-relaxed font-medium"
-            >
+            <p className="text-lg text-slate-700 max-w-2xl mx-auto leading-relaxed">
               Our platform meets the{" "}
-              <span className="bg-gradient-to-r from-[#5963f8] to-blue-800 bg-clip-text text-transparent font-bold">highest international standards</span> with{" "}
-              <span className="bg-gradient-to-r from-indigo-600 to-[#5963f8] bg-clip-text text-transparent font-bold">four critical ISO certifications</span> ensuring{" "}
-              <span className="bg-gradient-to-r from-[#5963f8] to-indigo-600 bg-clip-text text-transparent font-bold">comprehensive security and quality</span>
-            </motion.p>
-          </motion.div>
+              <span className="text-[#5963f8] font-bold">highest international standards</span> with{" "}
+              <span className="text-indigo-600 font-bold">four critical ISO certifications</span> ensuring{" "}
+              <span className="text-[#5963f8] font-bold">comprehensive security and quality</span>
+            </p>
+          </div>
 
           {/* Certification Badges Display - Compact Design */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={certificationInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6"
-          >
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
             {/* ISO 27017 - Cloud Management */}
-            <motion.div
-              whileHover={{ y: -4, scale: 1.05 }}
-              transition={{ duration: 0.3 }}
-              className="group relative"
-            >
+            <div className="group relative">
               <div className="relative bg-white rounded-xl p-4 shadow-md border border-slate-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300 text-center">
                 {/* Badge Image */}
                 <div className="relative mb-3">
@@ -558,14 +648,10 @@ const IndexPage = () => {
                   <span className="text-green-700 text-xs font-semibold">CERTIFIED</span>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* ISO 27018 - Personal Data Protection */}
-            <motion.div
-              whileHover={{ y: -4, scale: 1.05 }}
-              transition={{ duration: 0.3, delay: 0.1 }}
-              className="group relative"
-            >
+            <div className="group relative">
               <div className="relative bg-white rounded-xl p-4 shadow-md border border-slate-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300 text-center">
                 {/* Badge Image */}
                 <div className="relative mb-3">
@@ -591,14 +677,10 @@ const IndexPage = () => {
                   <span className="text-green-700 text-xs font-semibold">CERTIFIED</span>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* ISO 9001 - Quality Management */}
-            <motion.div
-              whileHover={{ y: -4, scale: 1.05 }}
-              transition={{ duration: 0.3, delay: 0.2 }}
-              className="group relative"
-            >
+            <div className="group relative">
               <div className="relative bg-white rounded-xl p-4 shadow-md border border-slate-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300 text-center">
                 {/* Badge Image */}
                 <div className="relative mb-3">
@@ -624,14 +706,10 @@ const IndexPage = () => {
                   <span className="text-green-700 text-xs font-semibold">CERTIFIED</span>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* ISO 27001 - Information Security Management */}
-            <motion.div
-              whileHover={{ y: -4, scale: 1.05 }}
-              transition={{ duration: 0.3, delay: 0.3 }}
-              className="group relative"
-            >
+            <div className="group relative">
               <div className="relative bg-white rounded-xl p-4 shadow-md border border-slate-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300 text-center">
                 {/* Badge Image */}
                 <div className="relative mb-3">
@@ -657,72 +735,8 @@ const IndexPage = () => {
                   <span className="text-green-700 text-xs font-semibold">CERTIFIED</span>
                 </div>
               </div>
-            </motion.div>
-          </motion.div>
-
-          {/* Trusted by Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={certificationInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="mt-16"
-          >
-            <div className="rounded-2xl p-8">
-              <div className="flex flex-col lg:flex-row items-center justify-center gap-3 w-full">
-                {/* Left Side - Text */}
-                <div className="text-center lg:text-left w-full lg:w-1/5">
-                  <div className="text-2xl font-bold text-slate-800 mb-2"> <span className="text-[#5963f8] bg-clip-text">SDSManager</span> is trusted by</div>
-                  <div className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">
-                    10,000+
-                  </div>
-                  <div className="text-2xl font-bold text-slate-800">Safety Managers</div>
-                </div>
-                
-                {/* Right Side - Company Logos */}
-                <div className="flex items-center justify-center w-full lg:w-4/5">
-                  {/* Unilever */}
-                  <div className="flex items-center justify-center w-1/5 h-24">
-                    <img 
-                      src={require("../images/unilever.png").default} 
-                      alt="Unilever"
-                      className="max-h-full max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
-                      style={{ maxHeight: '90px' }}
-                    />
-                  </div>
-                  
-                  {/* DeLonghi */}
-                  <div className="flex items-center justify-center w-1/5 h-24">
-                    <img 
-                      src={require("../images/delonghi.png").default} 
-                      alt="DeLonghi"
-                      className="max-h-full max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
-                      style={{ maxHeight: '90px' }}
-                    />
-                  </div>
-                  
-                  {/* THULE */}
-                  <div className="flex items-center justify-center w-1/5 h-24">
-                    <img 
-                      src={require("../images/thule.png").default} 
-                      alt="THULE"
-                      className="max-h-full max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
-                      style={{ maxHeight: '90px' }}
-                    />
-                  </div>
-                  
-                  {/* DHL */}
-                  <div className="flex items-center justify-center w-1/5 h-24">
-                    <img 
-                      src={require("../images/DHL-Emblem.png").default} 
-                      alt="DHL"
-                      className="max-h-full max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
-                      style={{ maxHeight: '90px' }}
-                    />
-                  </div>
-                </div>
-              </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -731,95 +745,45 @@ const IndexPage = () => {
       <section className="py-16 bg-white relative">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="inline-flex items-center px-6 py-3 bg-[#5963f8]/10 text-[#5963f8] rounded-full mb-6 border border-[#5963f8]/20 backdrop-blur-sm"
-            >
-              <BarChart3 className="w-5 h-5 mr-2" />
-              <span className="font-semibold">PRICING PLANS</span>
-            </motion.div>
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center px-4 py-2 bg-[#5963f8]/10 text-[#5963f8] rounded-full mb-4 border border-[#5963f8]/20">
+              <BarChart3 className="w-4 h-4 mr-2" />
+              <span className="font-semibold text-sm">PRICING PLANS</span>
+            </div>
             
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="text-3xl lg:text-5xl font-bold text-gray-900 mb-4"
-            >
+            <h2 className="text-2xl lg:text-4xl font-bold text-gray-900 mb-3">
               Choose Your{" "}
-              <span className="text-[#5963f8]">
-                Perfect Plan
-              </span>
-            </motion.h2>
+              <span className="text-[#5963f8]">Perfect Plan</span>
+            </h2>
             
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed"
-            >
+            <p className="text-base text-gray-600 max-w-xl mx-auto">
               Flexible pricing options designed to grow with your business needs.
-            </motion.p>
-          </motion.div>
+            </p>
+          </div>
 
           {/* Product Switcher Panel */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            viewport={{ once: true }}
-            className="flex justify-center mb-12"
-          >
-            <div className="relative bg-gray-100 rounded-2xl p-2 shadow-inner">
-              {/* Carved Panel Background */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl opacity-60"></div>
-              
-              {/* Product Tabs */}
-              <div className="relative flex space-x-1">
-                {[
-                  { id: 'exactsds', name: 'ExactSDS', icon: Database },
-                  { id: 'authoringlite', name: 'Author Lite', icon: FileText },
-                  { id: 'sdsservices', name: 'SDS Services', icon: Users }
-                ].map((product, index) => (
-                  <motion.button
-                    key={product.id}
-                    onClick={() => setActivePricingPanel(product.id)}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className={`relative px-8 py-4 rounded-xl font-semibold transition-all duration-300 flex items-center space-x-3 ${
-                      activePricingPanel === product.id
-                        ? 'text-white shadow-lg' 
-                        : 'text-gray-600 hover:text-gray-800'
-                    }`}
-                  >
-                    {activePricingPanel === product.id && (
-                      <motion.div
-                        layoutId="activeTab"
-                        className="absolute inset-0 bg-gradient-to-r from-[#5963f8] to-indigo-600 rounded-xl shadow-lg"
-                        initial={false}
-                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                      />
-                    )}
-                    <div className="relative z-10 flex items-center space-x-3">
-                      <product.icon className={`w-5 h-5 ${activePricingPanel === product.id ? 'text-white' : 'text-gray-500'}`} />
-                      <span>{product.name}</span>
-                    </div>
-                  </motion.button>
-                ))}
-              </div>
+          <div className="flex justify-center mb-10">
+            <div className="flex space-x-1 bg-gray-50 rounded-xl p-1 border border-gray-200">
+              {[
+                { id: 'exactsds', name: 'ExactSDS', icon: Database },
+                { id: 'authoringlite', name: 'Author Lite', icon: FileText },
+                { id: 'sdsservices', name: 'SDS Services', icon: Users }
+              ].map((product, index) => (
+                <button
+                  key={product.id}
+                  onClick={() => setActivePricingPanel(product.id)}
+                  className={`relative px-7 py-4 rounded-lg font-medium transition-all duration-200 flex items-center space-x-2 text-sm ${
+                    activePricingPanel === product.id
+                      ? 'text-[#5963f8] border border-[#5963f8] bg-white shadow-sm' 
+                      : 'text-gray-600 hover:text-gray-800 hover:bg-gray-100'
+                  }`}
+                >
+                  <product.icon className={`w-4 h-4 ${activePricingPanel === product.id ? 'text-[#5963f8]' : 'text-gray-500'}`} />
+                  <span>{product.name}</span>
+                </button>
+              ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* Dynamic Pricing Cards */}
           <motion.div
