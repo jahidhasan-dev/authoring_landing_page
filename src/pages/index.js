@@ -166,19 +166,19 @@ const IndexPage = () => {
             <div className="text-left">
               {/* Badge */}
               <div className="mb-8">
-                <div className="inline-flex items-center px-6 py-3 bg-[#5963f8]/10 backdrop-blur-sm rounded-full border border-[#5963f8]/20">
+                <div className="inline-flex items-center px-8 py-2 bg-[#5963f8]/10 backdrop-blur-sm rounded-full border border-[#5963f8]/20">
                   <Star className="w-5 h-5 text-[#5963f8] mr-3" />
                   <span className="text-sm font-semibold text-[#5963f8] tracking-wide">SDS AUTHORING SOFTWARE</span>
                 </div>
               </div>
               
               {/* Main Headline */}
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-[1.1] mb-8 text-gray-900 text-spacing-wide">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.1] mb-8 text-gray-900 text-spacing-wide">
               Smarter, Faster SDS Authoring for Global Compliance
               </h1>
               
               {/* Sub-headline */}
-              <p className="text-sm lg:text-lg text-gray-600 mb-12 leading-relaxed max-w-2xl">
+              <p className="text-lg lg:text-xl text-gray-600 mb-12 leading-relaxed max-w-2xl">
                 Create professional, regulation-ready Safety Data Sheets in minutes — not hours. Stay ahead of changing legislation with automation you can trust.
               </p>
               
@@ -187,7 +187,7 @@ const IndexPage = () => {
                 <a
                   href="https://exactsds.sdsmanager.com/register"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center bg-[#5963f8] hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                  className="inline-flex items-center justify-center bg-[#5963f8] hover:bg-blue-700 text-white px-8 py-3 rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                 >
                   Start free Trial
                   <ArrowRight className="ml-3 w-6 h-6" />
@@ -196,7 +196,7 @@ const IndexPage = () => {
                   href="https://docs.google.com/forms/d/e/1FAIpQLScDmCvkwwIrbh-bRW9OIzYDt_Uxk-GNVznykMepfrXHVjZjEg/viewform"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-gray-900 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-gray-200 hover:border-gray-300 transform hover:-translate-y-1"
+                  className="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-gray-900 px-8 py-3 rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-gray-200 hover:border-gray-300 transform hover:-translate-y-1"
                 >
                   Book a demo
                 </a>
@@ -291,7 +291,7 @@ const IndexPage = () => {
 
 
           {/* Features Section */}
-          <div className="mt-16 mb-8" style={{ marginTop: '6.5rem' }}>
+          <div className="mt-20 mb-8" style={{ marginTop: '6.5rem' }}>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {/* Feature 1 */}
               <div className="flex items-start gap-4">
@@ -353,7 +353,7 @@ const IndexPage = () => {
       </section>
 
       {/* Trusted by Section */}
-      <section className="bg-gray-50">
+      <section className="bg-gray-100">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="flex flex-col lg:flex-row items-center justify-center gap-3 w-full">
             {/* Left Side - Text */}
@@ -511,85 +511,89 @@ const IndexPage = () => {
           </div>
 
           {/* Features Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            
-            {/* Feature 1 */}
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200">
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-8 bg-purple-100 border border-purple-200 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-purple-600 font-semibold text-xs">DB</span>
+          <div className="max-w-5xl mx-auto">
+            {/* First Row - 3 features */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+              {/* Feature 1 */}
+              <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200">
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-8 bg-purple-100 border border-purple-200 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-purple-600 font-semibold text-xs">DB</span>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-gray-900 mb-2 text-base">Access Over 122M Substances</h3>
+                    <p className="text-gray-500 text-sm leading-relaxed">
+                      Tap into one of the largest chemical databases to ensure accuracy and up-to-date classifications.
+                    </p>
+                  </div>
                 </div>
-                <div className="flex-1">
-                  <h3 className="font-bold text-gray-900 mb-2 text-base">Access Over 122M Substances</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">
-                    Tap into one of the largest chemical databases to ensure accuracy and up-to-date classifications.
-                  </p>
+              </div>
+
+              {/* Feature 2 */}
+              <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200">
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-8 bg-teal-100 border border-teal-200 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-teal-600 font-semibold text-xs">SDS</span>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-gray-900 mb-2 text-base">16M SDS Records at Your Fingertips</h3>
+                    <p className="text-gray-500 text-sm leading-relaxed">
+                      Leverage insights from a massive SDS database to improve accuracy and speed.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Feature 3 */}
+              <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200">
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-8 bg-yellow-100 border border-yellow-200 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-yellow-600 font-semibold text-xs">TRK</span>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-gray-900 mb-2 text-base">Stay on Top of Every Change</h3>
+                    <p className="text-gray-500 text-sm leading-relaxed">
+                      Track updates seamlessly with built-in version history and compliance-ready audit trails.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Feature 2 */}
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200">
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-8 bg-teal-100 border border-teal-200 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-teal-600 font-semibold text-xs">SDS</span>
+            {/* Second Row - 2 features centered */}
+            <div className="flex justify-center">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl">
+                {/* Feature 4 */}
+                <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-8 bg-purple-100 border border-purple-200 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-purple-600 font-semibold text-xs">LNG</span>
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-bold text-gray-900 mb-2 text-base">Instant SDS Translation in 39 Languages</h3>
+                      <p className="text-gray-500 text-sm leading-relaxed">
+                        Automatically translate extracted text for global markets without losing accuracy.
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <div className="flex-1">
-                  <h3 className="font-bold text-gray-900 mb-2 text-base">16M SDS Records at Your Fingertips</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">
-                    Leverage insights from a massive SDS database to improve accuracy and speed.
-                  </p>
+
+                {/* Feature 5 */}
+                <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-8 bg-teal-100 border border-teal-200 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-teal-600 font-semibold text-xs">LBL</span>
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-bold text-gray-900 mb-2 text-base">Create Compliant Labels in One Click</h3>
+                      <p className="text-gray-500 text-sm leading-relaxed">
+                        Turn SDS data into ready-to-print, regulation-compliant labels instantly.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-
-            {/* Feature 3 */}
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200">
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-8 bg-yellow-100 border border-yellow-200 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-yellow-600 font-semibold text-xs">TRK</span>
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-bold text-gray-900 mb-2 text-base">Stay on Top of Every Change</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">
-                    Track updates seamlessly with built-in version history and compliance-ready audit trails.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Feature 4 */}
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200">
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-8 bg-purple-100 border border-purple-200 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-purple-600 font-semibold text-xs">LNG</span>
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-bold text-gray-900 mb-2 text-base">Instant SDS Translation in 39 Languages</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">
-                    Automatically translate extracted text for global markets without losing accuracy.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Feature 5 */}
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200">
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-8 bg-teal-100 border border-teal-200 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-teal-600 font-semibold text-xs">LBL</span>
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-bold text-gray-900 mb-2 text-base">Create Compliant Labels in One Click</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">
-                    Turn SDS data into ready-to-print, regulation-compliant labels instantly.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Empty space for better grid layout */}
-            <div className="hidden lg:block"></div>
           </div>
         </div>
       </section>
