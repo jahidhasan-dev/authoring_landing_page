@@ -185,7 +185,7 @@ const IndexPage = () => {
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
-                  href="https://exactsds.sdsmanager.com/login"
+                  href="https://exactsds.sdsmanager.com/register"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center bg-[#5963f8] hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                 >
