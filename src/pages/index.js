@@ -12,7 +12,13 @@ import {
   BarChart3,
   Database,
   ShieldCheck,
-  Settings
+  Settings,
+  X,
+  Search,
+  FileSpreadsheet,
+  History,
+  Globe,
+  Tag
 } from "lucide-react"
 
 import Layout from "../components/layout"
@@ -24,6 +30,74 @@ const IndexPage = () => {
   const [activePricingPanel, setActivePricingPanel] = React.useState('exactsds')
   const [selectedTier, setSelectedTier] = React.useState(0)
   const [showVideo, setShowVideo] = React.useState(false)
+  const [showCalendlyModal, setShowCalendlyModal] = React.useState(false)
+  const [hoverTimer, setHoverTimer] = React.useState(null)
+  const [isCalendlyLoading, setIsCalendlyLoading] = React.useState(true)
+  const [demoType, setDemoType] = React.useState('exactsds') // 'exactsds' or 'authorlite'
+
+  // Handle hover events for Calendly modal
+  const handleMouseEnter = (type = 'exactsds') => {
+    const timer = setTimeout(() => {
+      setDemoType(type)
+      setShowCalendlyModal(true)
+    }, 2000) // 2 seconds
+    setHoverTimer(timer)
+  }
+
+  const handleMouseLeave = () => {
+    if (hoverTimer) {
+      clearTimeout(hoverTimer)
+      setHoverTimer(null)
+    }
+  }
+
+  const handleClick = (type = 'exactsds') => {
+    setDemoType(type)
+    setShowCalendlyModal(true)
+  }
+
+  const closeModal = () => {
+    setShowCalendlyModal(false)
+    setIsCalendlyLoading(true)
+    if (hoverTimer) {
+      clearTimeout(hoverTimer)
+      setHoverTimer(null)
+    }
+  }
+
+  const handleBackdropClick = (e) => {
+    if (e.target === e.currentTarget) {
+      closeModal()
+    }
+  }
+
+  // Cleanup timer on unmount
+  React.useEffect(() => {
+    return () => {
+      if (hoverTimer) {
+        clearTimeout(hoverTimer)
+      }
+    }
+  }, [hoverTimer])
+
+  // Handle escape key to close modal
+  React.useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape' && showCalendlyModal) {
+        closeModal()
+      }
+    }
+
+    if (showCalendlyModal) {
+      document.addEventListener('keydown', handleEscape)
+      document.body.style.overflow = 'hidden' // Prevent background scrolling
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape)
+      document.body.style.overflow = 'unset'
+    }
+  }, [showCalendlyModal])
 
   // Pricing data for each product
   const pricingData = {
@@ -155,6 +229,36 @@ const IndexPage = () => {
 
   return (
     <Layout>
+      {/* Custom loader animation styles */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          .loader {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #5963f8;
+            box-shadow: 32px 0 #5963f8, -32px 0 #5963f8;
+            position: relative;
+            animation: flash 0.5s ease-out infinite alternate;
+          }
+
+          @keyframes flash {
+            0% {
+              background-color: #FFF2;
+              box-shadow: 32px 0 #FFF2, -32px 0 #5963f8;
+            }
+            50% {
+              background-color: #5963f8;
+              box-shadow: 32px 0 #FFF2, -32px 0 #FFF2;
+            }
+            100% {
+              background-color: #FFF2;
+              box-shadow: 32px 0 ##5963f8, -32px 0 #FFF2;
+            }
+          }
+                
+        `
+      }} />
       {/* Hero Section */}
       <section ref={heroRef} className="bg-white py-15 lg:py-20 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -189,14 +293,16 @@ const IndexPage = () => {
                   Start free Trial
                   <ArrowRight className="ml-3 w-6 h-6" />
                 </a>
-                <a
-                  href="https://docs.google.com/forms/d/e/1FAIpQLScDmCvkwwIrbh-bRW9OIzYDt_Uxk-GNVznykMepfrXHVjZjEg/viewform"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-gray-900 px-8 py-3 rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-gray-200 hover:border-gray-300 transform hover:-translate-y-1"
+                <button
+                  onClick={() => handleClick('exactsds')}
+                  onMouseEnter={() => handleMouseEnter('exactsds')}
+                  onMouseLeave={handleMouseLeave}
+                  className="inline-flex items-center justify-center text-[#5963f8]/100 px-8 py-3 rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl border border-[#5963f8]/100 hover:scale-102 transform hover:-translate-y-1 relative group"
                 >
                   Book a demo
-                </a>
+                  {/* Hover indicator */}
+                  <div className="absolute -top-2 -right-2 w-3 h-3 bg-[#5963f8]/50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse"></div>
+                </button>
               </div>
             </div>
 
@@ -489,37 +595,39 @@ const IndexPage = () => {
       </section>
 
       {/* Tools Section */}
-      <section className="py-16">
+      <section className="py-20 bg-gradient-to-b from-white to-gray-50/50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
-          <div className="text-center mb-12">
-          <div className="inline-flex items-center px-4 py-2 bg-[#5963f8]/10 rounded-full border border-[#5963f8]/20 mb-6">
-              <Settings className="w-4 h-4 mr-2 text-[#5963f8]" />
-              <span className="font-medium text-sm text-[#5963f8] tracking-wide">Authoring Tools</span>
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center px-5 py-2.5 bg-gradient-to-r from-[#5963f8]/10 to-[#5963f8]/5 rounded-full border border-[#5963f8]/20 mb-8 shadow-sm">
+              <Settings className="w-4 h-4 mr-2.5 text-[#5963f8]" />
+              <span className="font-semibold text-sm text-[#5963f8] tracking-wide">Authoring Tools</span>
             </div>
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
               Tools Designed to{" "}
-              <span className="text-[#5963f8]">Simplify SDS Creation</span>
+              <span className="bg-gradient-to-r from-[#5963f8] to-[#8b5cf6] bg-clip-text text-transparent">
+                Simplify SDS Creation
+              </span>
             </h2>
             
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light">
               Keeping SDSs compliant often requires hours of tracking chemical updates and shifting regulations. Our ISO 9001–certified platform simplifies the process so you can focus less on paperwork and more on productivity — while ensuring accuracy every time.
             </p>
           </div>
 
           {/* Features Grid */}
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             {/* First Row - 3 features */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
               {/* Feature 1 */}
-              <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-8 bg-purple-100 border border-purple-200 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-purple-600 font-semibold text-xs">DB</span>
+              <div className="group bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-md border border-gray-100/60 hover:shadow-lg hover:shadow-purple-500/5 transition-all duration-300 hover:-translate-y-1">
+                <div className="flex items-start space-x-5">
+                  <div className="w-14 h-14 bg-gradient-to-br from-purple-100 to-purple-200 border border-purple-200/50 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
+                    <Database className="w-7 h-7 text-purple-600" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-bold text-gray-900 mb-2 text-base">Access Over 122M Substances</h3>
-                    <p className="text-gray-500 text-sm leading-relaxed">
+                    <h3 className="font-bold text-gray-900 mb-3 text-lg group-hover:text-purple-700 transition-colors duration-200">Access Over 122M Substances</h3>
+                    <p className="text-gray-600 text-base leading-relaxed">
                       Tap into one of the largest chemical databases to ensure accuracy and up-to-date classifications.
                     </p>
                   </div>
@@ -527,14 +635,14 @@ const IndexPage = () => {
               </div>
 
               {/* Feature 2 */}
-              <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-8 bg-teal-100 border border-teal-200 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-teal-600 font-semibold text-xs">SDS</span>
+              <div className="group bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-md border border-gray-100/60 hover:shadow-lg hover:shadow-teal-500/5 transition-all duration-300 hover:-translate-y-1">
+                <div className="flex items-start space-x-5">
+                  <div className="w-14 h-14 bg-gradient-to-br from-teal-100 to-teal-200 border border-teal-200/50 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
+                    <FileSpreadsheet className="w-7 h-7 text-teal-600" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-bold text-gray-900 mb-2 text-base">16M SDS Records at Your Fingertips</h3>
-                    <p className="text-gray-500 text-sm leading-relaxed">
+                    <h3 className="font-bold text-gray-900 mb-3 text-lg group-hover:text-teal-700 transition-colors duration-200">16M SDS Records at Your Fingertips</h3>
+                    <p className="text-gray-600 text-base leading-relaxed">
                       Leverage insights from a massive SDS database to improve accuracy and speed.
                     </p>
                   </div>
@@ -542,14 +650,14 @@ const IndexPage = () => {
               </div>
 
               {/* Feature 3 */}
-              <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-8 bg-yellow-100 border border-yellow-200 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-yellow-600 font-semibold text-xs">TRK</span>
+              <div className="group bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-md border border-gray-100/60 hover:shadow-lg hover:shadow-yellow-500/5 transition-all duration-300 hover:-translate-y-1">
+                <div className="flex items-start space-x-5">
+                  <div className="w-14 h-14 bg-gradient-to-br from-yellow-100 to-yellow-200 border border-yellow-200/50 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
+                    <History className="w-7 h-7 text-yellow-600" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-bold text-gray-900 mb-2 text-base">Stay on Top of Every Change</h3>
-                    <p className="text-gray-500 text-sm leading-relaxed">
+                    <h3 className="font-bold text-gray-900 mb-3 text-lg group-hover:text-yellow-700 transition-colors duration-200">Stay on Top of Every Change</h3>
+                    <p className="text-gray-600 text-base leading-relaxed">
                       Track updates seamlessly with built-in version history and compliance-ready audit trails.
                     </p>
                   </div>
@@ -559,16 +667,16 @@ const IndexPage = () => {
 
             {/* Second Row - 2 features centered */}
             <div className="flex justify-center">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl">
                 {/* Feature 4 */}
-                <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-8 bg-purple-100 border border-purple-200 rounded-full flex items-center justify-center flex-shrink-0">
-                      <span className="text-purple-600 font-semibold text-xs">LNG</span>
+                <div className="group bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-md border border-gray-100/60 hover:shadow-lg hover:shadow-purple-500/5 transition-all duration-300 hover:-translate-y-1">
+                  <div className="flex items-start space-x-5">
+                    <div className="w-14 h-14 bg-gradient-to-br from-purple-100 to-purple-200 border border-purple-200/50 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
+                      <Globe className="w-7 h-7 text-purple-600" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-bold text-gray-900 mb-2 text-base">Instant SDS Translation in 39 Languages</h3>
-                      <p className="text-gray-500 text-sm leading-relaxed">
+                      <h3 className="font-bold text-gray-900 mb-3 text-lg group-hover:text-purple-700 transition-colors duration-200">Instant SDS Translation in 39 Languages</h3>
+                      <p className="text-gray-600 text-base leading-relaxed">
                         Automatically translate extracted text for global markets without losing accuracy.
                       </p>
                     </div>
@@ -576,14 +684,14 @@ const IndexPage = () => {
                 </div>
 
                 {/* Feature 5 */}
-                <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-8 bg-teal-100 border border-teal-200 rounded-full flex items-center justify-center flex-shrink-0">
-                      <span className="text-teal-600 font-semibold text-xs">LBL</span>
+                <div className="group bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-md border border-gray-100/60 hover:shadow-lg hover:shadow-teal-500/5 transition-all duration-300 hover:-translate-y-1">
+                  <div className="flex items-start space-x-5">
+                    <div className="w-14 h-14 bg-gradient-to-br from-teal-100 to-teal-200 border border-teal-200/50 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
+                      <Tag className="w-7 h-7 text-teal-600" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-bold text-gray-900 mb-2 text-base">Create Compliant Labels in One Click</h3>
-                      <p className="text-gray-500 text-sm leading-relaxed">
+                      <h3 className="font-bold text-gray-900 mb-3 text-lg group-hover:text-teal-700 transition-colors duration-200">Create Compliant Labels in One Click</h3>
+                      <p className="text-gray-600 text-base leading-relaxed">
                         Turn SDS data into ready-to-print, regulation-compliant labels instantly.
                       </p>
                     </div>
@@ -883,9 +991,14 @@ const IndexPage = () => {
                       <motion.button
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
-                        className={`flex-1 ${plan.secondaryButton.style} py-4 px-6 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg`}
+                        onClick={() => handleClick('authorlite')}
+                        onMouseEnter={() => handleMouseEnter('authorlite')}
+                        onMouseLeave={handleMouseLeave}
+                        className={`flex-1 ${plan.secondaryButton.style} py-4 px-6 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg relative group`}
                       >
                         {plan.secondaryButton.text}
+                        {/* Hover indicator */}
+                        <div className="absolute -top-2 -right-2 w-3 h-3 bg-[#5963f8]/50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse"></div>
                       </motion.button>
                     </div>
                   ) : plan.isContactOnly || (plan.hasTierSelector && plan.tiers && plan.tiers[selectedTier].price === 'Custom') ? (
@@ -943,6 +1056,61 @@ const IndexPage = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Calendly Modal */}
+      {showCalendlyModal && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50"
+          onClick={handleBackdropClick}
+        >
+          <div className="relative bg-white rounded-xl shadow-xl w-full max-w-[450px] h-[60vh] max-h-[500px] overflow-hidden border border-[#5963f8]">
+            {/* Modal Header - Compact */}
+            <div className="flex items-center justify-between px-4 py-3 bg-[#5963f8]">
+              <h3 className="text-base font-semibold text-white">
+                {demoType === 'authorlite' ? 'Author Lite Demo' : 'Exact SDS Demo'}
+              </h3>
+              <button
+                onClick={closeModal}
+                className="p-1 hover:bg-white/20 rounded-lg transition-colors duration-200"
+              >
+                <X className="w-4 h-4 text-white" />
+              </button>
+            </div>
+            
+            {/* Calendly Embed */}
+            <div className="h-full relative text-center">
+              {/* Loading State */}
+              {isCalendlyLoading && (
+                <div className="absolute inset-0 flex items-center justify-center bg-gray-50 z-10">
+                  <div className="flex flex-col items-center space-y-4">
+                    <div className="loader"></div>
+                  </div>
+                </div>
+              )}
+              
+              <div className="w-full h-full text-center">
+                <iframe
+                  src="https://calendly.com/d/cs6z-t4p-39m/exact-sds-demo?embed_domain=localhost&embed_type=Inline&hide_landing_page_details=1&hide_gdpr_banner=1"
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  title={demoType === 'authorlite' ? 'Author Lite Demo' : 'Exact SDS Demo'}
+                  className="w-full h-full mx-auto flex items-center justify-center"
+                  style={{ 
+                    border: 'none',
+                    display: 'block',
+                    margin: '0 auto',
+                    textAlign: 'center',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}
+                  onLoad={() => setIsCalendlyLoading(false)}
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
     </Layout>
   )
