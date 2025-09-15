@@ -256,6 +256,43 @@ const IndexPage = () => {
               box-shadow: 32px 0 ##5963f8, -32px 0 #FFF2;
             }
           }
+
+          @keyframes heartBeat {
+            0% {
+              transform: scale(1);
+              opacity: 1;
+            }
+            20% {
+              transform: scale(1.05);
+              opacity: 0.9;
+            }
+            40% {
+              transform: scale(1);
+              opacity: 1;
+            }
+            60% {
+              transform: scale(1.05);
+              opacity: 0.9;
+            }
+            80% {
+              transform: scale(1);
+              opacity: 1;
+            }
+            100% {
+              transform: scale(1);
+              opacity: 1;
+            }
+          }
+
+          .heart-beat {
+            animation: heartBeat 6s ease-in-out infinite;
+          }
+
+          .heart-beat:hover,
+          .heart-beat:active,
+          .heart-beat:focus {
+            animation-play-state: paused;
+          }
                 
         `
       }} />
@@ -281,12 +318,12 @@ const IndexPage = () => {
               </div>
               
               {/* Main Headline */}
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.1] mb-8 text-gray-900 text-spacing-wide">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-[1.1] mb-8 text-gray-900 text-spacing-wide">
               Smarter, Faster SDS Authoring for Global Compliance
               </h1>
               
               {/* Sub-headline */}
-              <p className="text-lg lg:text-xl text-gray-600 mb-12 leading-relaxed max-w-2xl">
+              <p className="text-md lg:text-lg text-gray-600 mb-12 leading-relaxed max-w-2xl">
                 Create professional, regulation-ready Safety Data Sheets in minutes — not hours. Stay ahead of changing legislation with automation you can trust.
               </p>
               
@@ -295,7 +332,7 @@ const IndexPage = () => {
                 <a
                   href="https://exactsds.sdsmanager.com/register"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center bg-[#5963f8] hover:bg-blue-700 text-white px-8 py-3 rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                  className="inline-flex items-center justify-center text-[#5963f8] hover:text-blue-700 border border-[#5963f8] hover:border-blue-700 px-8 py-3 rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                 >
                   Start free Trial
                   <ArrowRight className="ml-3 w-6 h-6" />
@@ -304,11 +341,9 @@ const IndexPage = () => {
                   onClick={() => handleClick('exactsds')}
                   onMouseEnter={() => handleMouseEnter('exactsds')}
                   onMouseLeave={handleMouseLeave}
-                  className="inline-flex items-center justify-center text-[#5963f8]/100 px-8 py-3 rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl border border-[#5963f8]/100 hover:scale-102 transform hover:-translate-y-1 relative group"
+                  className="inline-flex items-center justify-center bg-[#facc14] hover:bg-[#e6b800] text-gray-900 px-8 py-3 rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-102 transform hover:-translate-y-1 relative group heart-beat"
                 >
                   Book a demo
-                  {/* Hover indicator */}
-                  <div className="absolute -top-2 -right-1 w-3 h-3 bg-[#5963f8] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse"></div>
                 </button>
               </div>
             </div>
@@ -1033,11 +1068,9 @@ const IndexPage = () => {
                         onClick={() => handleClick('authorlite')}
                         onMouseEnter={() => handleMouseEnter('authorlite')}
                         onMouseLeave={handleMouseLeave}
-                        className={`flex-1 ${plan.secondaryButton.style} py-4 px-6 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg relative group`}
+                        className={`flex-1 ${plan.secondaryButton.style} py-4 px-6 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg relative group heart-beat`}
                       >
                         {plan.secondaryButton.text}
-                        {/* Hover indicator */}
-                        <div className="absolute -top-1 -right-2 w-3 h-3 bg-[#facc14] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse"></div>
                       </motion.button>
                     </div>
                   ) : plan.isContactOnly || (plan.hasTierSelector && plan.tiers && plan.tiers[selectedTier].price === 'Custom') ? (
