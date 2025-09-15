@@ -40,8 +40,7 @@ const IndexPage = () => {
             'Create SDSs from any chemical mixture',
             'Generates hazard codes from our 16M+ SDS database',
             'Applies up-to-date GHS classifications and regulatory checks',
-            'Instant AI suggestions for each section (to reduce manual guesswork)',
-            'SDS delivered via email after generation'
+            'Instant AI suggestions for each section (to reduce manual guesswork)'
           ],
           buttonText: 'Get Early Access',
           buttonStyle: 'bg-[#5963f8] hover:bg-blue-700'
@@ -57,8 +56,7 @@ const IndexPage = () => {
             'Editable SDSs for future updates and changes',
             'Personal branding (logos, headers, etc.) on all SDSs you generate',
             'Ability to customize and revise your SDS anytime',
-            'Store and manage multiple SDSs in one dashboard',
-            'Easier team collaboration and document control'
+            'Store and manage multiple SDSs in one dashboard'
           ],
           buttonText: 'Get Early Access',
           buttonStyle: 'bg-gradient-to-r from-[#5963f8] to-indigo-600 hover:from-blue-700 hover:to-indigo-700',
@@ -84,9 +82,8 @@ const IndexPage = () => {
             'Custom pricing for bulk SDS generation',
             'Dedicated account management',
             'Custom compliance reporting and analytics',
-            '24/7 dedicated technical support',
-            'On-site training and implementation support',
-            'Unlimited SDS generation with premium AI suggestions',
+            'Dedicated technical support',
+            'Training and implementation support',
           ],
           buttonText: 'Contact Us',
           buttonStyle: 'bg-[#5963f8] hover:bg-blue-700'
