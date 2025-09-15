@@ -260,7 +260,14 @@ const IndexPage = () => {
         `
       }} />
       {/* Hero Section */}
-      <section ref={heroRef} className="bg-white py-15 lg:py-20 relative overflow-hidden">
+      <section ref={heroRef} className="py-20 relative overflow-hidden" style={{
+        backgroundImage: `url(${require("../images/hero-bg.avif").default})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}>
+        {/* Background overlay for better text readability */}
+        <div className="absolute inset-0 bg-white/40 backdrop-blur-sm"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left Side - Text Content */}
@@ -301,7 +308,7 @@ const IndexPage = () => {
                 >
                   Book a demo
                   {/* Hover indicator */}
-                  <div className="absolute -top-2 -right-2 w-3 h-3 bg-[#5963f8]/50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse"></div>
+                  <div className="absolute -top-2 -right-1 w-3 h-3 bg-[#5963f8] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse"></div>
                 </button>
               </div>
             </div>
@@ -336,15 +343,18 @@ const IndexPage = () => {
               {!showVideo ? (
                 /* Video Thumbnail Container */
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl w-full h-full max-h-[450px] min-h-[380px] z-20">
-                  {/* Thumbnail Image */}
-                  <img 
-                    src={require("../images/thumbnail.png").default} 
-                    alt="SDS Manager Video Thumbnail"
+                  {/* Loopback Video as Thumbnail */}
+                  <video 
+                    src={require("../images/loopback_video.mp4").default}
                     className="w-full h-full object-cover"
+                    muted
+                    loop
+                    autoPlay
+                    playsInline
                   />
                   
                   {/* Play Button Overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/2">
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/3">
                     <button 
                       onClick={() => setShowVideo(true)}
                       className="group bg-white/95 hover:bg-white rounded-2xl px-8 py-4 shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105 flex items-center space-x-4"
@@ -370,7 +380,7 @@ const IndexPage = () => {
                 /* Video Player */
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl w-full h-full max-h-[450px] min-h-[380px] bg-white z-20">
                   <iframe
-                    src="https://www.youtube.com/embed/wQnDf-74ysY?start=3&autoplay=1&rel=0&modestbranding=1&showinfo=0&controls=1"
+                    src="https://www.youtube.com/embed/wQnDf-74ysY?start=3&autoplay=1&rel=0&modestbranding=1&showinfo=0&controls=1&iv_load_policy=3&fs=1&cc_load_policy=0&disablekb=1&playsinline=1&enablejsapi=0&origin=https://yoursite.com"
                     title="Introduction to SDS Manager"
                     className="w-full h-full rounded-2xl"
                     frameBorder="0"
@@ -456,7 +466,7 @@ const IndexPage = () => {
       </section>
 
       {/* Trusted by Section */}
-      <section className="bg-gray-100">
+      <section className="bg-transparent">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="flex flex-col lg:flex-row items-center justify-center gap-3 w-full">
             {/* Left Side - Text */}
@@ -515,8 +525,15 @@ const IndexPage = () => {
       </section>
 
       {/* Products Section */}
-      <section className="py-20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 relative overflow-hidden" style={{
+        backgroundImage: `url(${require("../images/product-section-bg.png").default})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}>
+        {/* Background overlay for better text readability */}
+        <div className="absolute inset-0 bg-white/70 backdrop-blur-sm"></div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
           <div className="text-center mb-16">
             <div className="inline-flex items-center px-4 py-2 bg-[#5963f8]/10 rounded-full border border-[#5963f8]/20 mb-6">
@@ -595,8 +612,30 @@ const IndexPage = () => {
       </section>
 
       {/* Tools Section */}
-      <section className="py-20 bg-gradient-to-b from-white to-gray-50/50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-gradient-to-b from-white to-gray-50/50 relative overflow-hidden">
+        {/* Left Background Image */}
+        <div 
+          className="absolute left-0 top-0 w-1/3 h-full opacity-10"
+          style={{
+            backgroundImage: `url(${require("../images/tools-bg-left.jpg").default})`,
+            backgroundSize: 'contain',
+            backgroundPosition: 'left center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        ></div>
+        
+        {/* Right Background Image */}
+        <div 
+          className="absolute right-0 top-0 w-1/3 h-full opacity-10"
+          style={{
+            backgroundImage: `url(${require("../images/tools-bg-right.jpg").default})`,
+            backgroundSize: 'contain',
+            backgroundPosition: 'right center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        ></div>
+        
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
           <div className="text-center mb-16">
             <div className="inline-flex items-center px-5 py-2.5 bg-gradient-to-r from-[#5963f8]/10 to-[#5963f8]/5 rounded-full border border-[#5963f8]/20 mb-8 shadow-sm">
@@ -998,7 +1037,7 @@ const IndexPage = () => {
                       >
                         {plan.secondaryButton.text}
                         {/* Hover indicator */}
-                        <div className="absolute -top-2 -right-2 w-3 h-3 bg-[#5963f8]/50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse"></div>
+                        <div className="absolute -top-1 -right-2 w-3 h-3 bg-[#facc14] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse"></div>
                       </motion.button>
                     </div>
                   ) : plan.isContactOnly || (plan.hasTierSelector && plan.tiers && plan.tiers[selectedTier].price === 'Custom') ? (
@@ -1088,21 +1127,15 @@ const IndexPage = () => {
                 </div>
               )}
               
-              <div className="w-full h-full text-center">
+              <div className="w-full h-full">
                 <iframe
                   src="https://calendly.com/d/cs6z-t4p-39m/exact-sds-demo?embed_domain=localhost&embed_type=Inline&hide_landing_page_details=1&hide_gdpr_banner=1"
                   width="100%"
                   height="100%"
-                  frameBorder="0"
-                  title={demoType === 'authorlite' ? 'Author Lite Demo' : 'Exact SDS Demo'}
-                  className="w-full h-full mx-auto flex items-center justify-center"
+                  className="w-full h-full"
                   style={{ 
                     border: 'none',
-                    display: 'block',
-                    margin: '0 auto',
-                    textAlign: 'center',
-                    alignItems: 'center',
-                    justifyContent: 'center'
+                    display: 'flex'
                   }}
                   onLoad={() => setIsCalendlyLoading(false)}
                 ></iframe>
