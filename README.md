@@ -1,99 +1,205 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.com">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby's default starter
-</h1>
+# SDS Authoring Landing Page
 
-Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+A modern, responsive landing page for SDS (Safety Data Sheet) authoring software built with Gatsby, React, and Tailwind CSS. This landing page showcases professional chemical safety documentation tools and compliance solutions.
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.com/docs/gatsby-starters/)._
+## 🚀 Features
 
-## 🚀 Quick start
+- **Modern Design**: Clean, professional interface with smooth animations
+- **Responsive Layout**: Optimized for all device sizes
+- **Interactive Elements**: Hover effects, video modals, and dynamic pricing panels
+- **Performance Optimized**: Built with Gatsby for fast loading and SEO
+- **Accessibility**: WCAG compliant with proper semantic HTML
+- **Animation Library**: Smooth transitions using Framer Motion
+- **Video Integration**: Embedded product demonstration videos
 
-1.  **Create a Gatsby site.**
+## 🛠️ Tech Stack
 
-    Use the Gatsby CLI ([install instructions](https://www.gatsbyjs.com/docs/tutorial/getting-started/part-0/#gatsby-cli)) to create a new site, specifying the default starter.
+- **Framework**: Gatsby 5.14.6
+- **Frontend**: React 18.2.0
+- **Styling**: Tailwind CSS 3.4.1
+- **Animations**: Framer Motion 10.16.4
+- **Icons**: Lucide React 0.263.1
+- **Build Tool**: PostCSS with Autoprefixer
 
-    ```shell
-    # create a new Gatsby site using the default starter
-    gatsby new my-default-starter https://github.com/gatsbyjs/gatsby-starter-default
-    ```
+## 📋 Prerequisites
 
-1.  **Start developing.**
+Before you begin, ensure you have the following installed on your system:
 
-    Navigate into your new site’s directory and start it up.
+- **Node.js** (version 16.0 or higher) - [Download here](https://nodejs.org/)
+- **npm** (comes with Node.js) or **yarn**
+- **Git** - [Download here](https://git-scm.com/)
 
-    ```shell
-    cd my-default-starter/
-    gatsby develop
-    ```
+## 🚀 Quick Start
 
-1.  **Open the source code and start editing!**
+### 1. Clone the Repository
 
-    Your site is now running at `http://localhost:8000`!
+```bash
+git clone https://github.com/sdsmanager/sds-authoring-landing.git
+cd sds-authoring-landing
+```
 
-    Note: You'll also see a second link: `http://localhost:8000/___graphql`. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby Tutorial](https://www.gatsbyjs.com/docs/tutorial/getting-started/part-4/#use-graphiql-to-explore-the-data-layer-and-write-graphql-queries).
+### 2. Install Dependencies
 
-    Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+```bash
+npm install
+# or
+yarn install
+```
 
-## 🚀 Quick start (Netlify)
+### 3. Start Development Server
 
-Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
+```bash
+npm run develop
+# or
+yarn develop
+```
 
-[<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
+### 4. Open Your Browser
 
-## 🧐 What's inside?
+Navigate to [http://localhost:8000](http://localhost:8000) to view the landing page.
 
-A quick look at the top-level files and directories you'll see in a typical Gatsby project.
+## 📁 Project Structure
 
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package.json
-    └── README.md
+```
+sds-authoring-landing/
+├── public/                 # Static files and build output
+├── src/
+│   ├── components/         # Reusable React components
+│   │   ├── header.js      # Navigation header
+│   │   ├── layout.js      # Main layout wrapper
+│   │   ├── layout.css     # Global styles
+│   │   └── seo.js         # SEO component
+│   ├── images/            # Image assets
+│   ├── pages/             # Page components
+│   │   ├── index.js       # Homepage
+│   │   └── 404.js         # 404 error page
+│   └── templates/         # Page templates
+├── gatsby-config.js       # Gatsby configuration
+├── gatsby-node.js         # Gatsby Node.js APIs
+├── gatsby-browser.js      # Gatsby browser APIs
+├── gatsby-ssr.js          # Gatsby SSR APIs
+├── tailwind.config.js     # Tailwind CSS configuration
+├── postcss.config.js      # PostCSS configuration
+└── package.json           # Project dependencies and scripts
+```
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
+## 🎨 Customization
 
-1.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+### Styling
+The project uses Tailwind CSS for styling. Customize colors, fonts, and other design tokens in `tailwind.config.js`:
 
-1.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
+```javascript
+theme: {
+  extend: {
+    colors: {
+      primary: {
+        50: '#eff6ff',
+        500: '#3b82f6',
+        600: '#2563eb',
+        // ... more colors
+      }
+    }
+  }
+}
+```
 
-1.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-browser/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
+### Content
+Edit the main content in `src/pages/index.js`. The page includes:
+- Hero section with call-to-action
+- Features showcase
+- Pricing panels
+- Customer testimonials
+- Video demonstrations
+- Contact forms
 
-1.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/) for more detail).
+### SEO
+Update site metadata in `gatsby-config.js`:
 
-1.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
+```javascript
+siteMetadata: {
+  title: `Your Site Title`,
+  description: `Your site description`,
+  author: `Your Name`,
+  siteUrl: `https://yoursite.com`,
+}
+```
 
-1.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-ssr/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
+## 📜 Available Scripts
 
-1.  **`LICENSE`**: This Gatsby starter is licensed under the 0BSD license. This means that you can see this file as a placeholder and replace it with your own license.
+- `npm run develop` - Start development server
+- `npm run build` - Build production version
+- `npm run serve` - Serve production build locally
+- `npm run clean` - Clean Gatsby cache
+- `npm run format` - Format code with Prettier
 
-1.  **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
+## 🚀 Deployment
 
-1.  **`README.md`**: A text file containing useful reference information about your project.
+### Netlify (Recommended)
 
-## 🎓 Learning Gatsby
+1. Connect your GitHub repository to Netlify
+2. Set build command: `npm run build`
+3. Set publish directory: `public`
+4. Deploy!
 
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.com/). Here are some places to start:
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/sdsmanager/sds-authoring-landing)
 
-- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.com/docs/tutorial/getting-started/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
+### Other Platforms
 
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.com/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
+This Gatsby site can be deployed to any static hosting service:
+- **Vercel**: Connect GitHub repo and deploy
+- **GitHub Pages**: Use GitHub Actions for automated deployment
+- **AWS S3 + CloudFront**: Upload build files to S3
+- **Firebase Hosting**: Use Firebase CLI to deploy
 
-## 💫 Deploy
+## 🔧 Configuration
 
-[Build, Deploy, and Host On Netlify](https://netlify.com)
+### Environment Variables
 
-The fastest way to combine your favorite tools and APIs to build the fastest sites, stores, and apps for the web. And also the best place to build, deploy, and host your Gatsby sites.
+Create a `.env` file in the root directory for environment-specific variables:
 
-<!-- AUTO-GENERATED-CONTENT:END -->
+```env
+GATSBY_SITE_URL=https://yoursite.com
+GATSBY_ANALYTICS_ID=your-analytics-id
+```
+
+### Build Configuration
+
+Modify `gatsby-config.js` to add plugins, configure site metadata, or add new features.
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+1. **Node.js Version**: Ensure you're using Node.js 16.0 or higher
+2. **Dependencies**: Delete `node_modules` and `package-lock.json`, then run `npm install`
+3. **Cache Issues**: Run `npm run clean` to clear Gatsby cache
+4. **Port Conflicts**: If port 8000 is busy, Gatsby will automatically use the next available port
+
+### Getting Help
+
+- Check the [Gatsby Documentation](https://www.gatsbyjs.com/docs/)
+- Search [GitHub Issues](https://github.com/sdsmanager/sds-authoring-landing/issues)
+- Join the [Gatsby Discord](https://gatsby.dev/discord)
+
+## 📄 License
+
+This project is licensed under the 0BSD License - see the [LICENSE](LICENSE) file for details.
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📞 Support
+
+For support and questions:
+- Email: support@sdsmanager.com
+- Website: [https://sdsmanager.com](https://sdsmanager.com)
+- Documentation: [https://docs.sdsmanager.com](https://docs.sdsmanager.com)
+
+---
+
+Built with ❤️ by the SDS Manager team

@@ -389,19 +389,18 @@ const IndexPage = () => {
                   />
                   
                   {/* Play Button Overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/3">
+                  {/* <div className="absolute inset-0 flex items-center justify-center bg-black/3">
                     <button 
                       onClick={() => setShowVideo(true)}
                       className="group bg-white/95 hover:bg-white rounded-2xl px-8 py-4 shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105 flex items-center space-x-4"
                     >
-                      {/* Play Icon */}
+                    
                       <div className="w-16 h-16 bg-[#5963f8] rounded-full flex items-center justify-center group-hover:bg-blue-700 transition-colors duration-300">
                         <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M8 5v14l11-7z"/>
                         </svg>
                       </div>
                       
-                      {/* Text */}
                       <div className="text-left">
                         <div className="text-lg font-bold text-gray-900 group-hover:text-[#5963f8] transition-colors duration-300">
                           How ExactSDS Works
@@ -409,7 +408,7 @@ const IndexPage = () => {
                         <div className="text-sm text-gray-600">Watch our demo video</div>
                       </div>
                     </button>
-                  </div>
+                  </div> */}
                 </div>
               ) : (
                 /* Video Player */
