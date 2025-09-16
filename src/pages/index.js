@@ -116,8 +116,8 @@ const IndexPage = () => {
             'Applies up-to-date GHS classifications and regulatory checks',
             'Instant AI suggestions for each section (to reduce manual guesswork)'
           ],
-          buttonText: 'Get Early Access',
-          buttonStyle: 'bg-[#5963f8] hover:bg-blue-700'
+          buttonText: 'Start Free Trial',
+          buttonStyle: 'text-[#5963f8] hover:text-blue-700 border border-[#5963f8] hover:border-blue-700'
         },
         {
           name: 'Standard',
@@ -132,8 +132,8 @@ const IndexPage = () => {
             'Ability to customize and revise your SDS anytime',
             'Store and manage multiple SDSs in one dashboard'
           ],
-          buttonText: 'Get Early Access',
-          buttonStyle: 'bg-gradient-to-r from-[#5963f8] to-indigo-600 hover:from-blue-700 hover:to-indigo-700',
+          buttonText: 'Start Free Trial',
+          buttonStyle: 'text-[#5963f8] hover:text-blue-700 border border-[#5963f8] hover:border-blue-700',
           recommended: true,
           hasTierSelector: true,
           tiers: [
@@ -1055,13 +1055,16 @@ const IndexPage = () => {
                   {plan.secondaryButton && !(plan.hasTierSelector && plan.tiers && plan.tiers[selectedTier].price === 'Custom') ? (
                     // Two-button layout for Authoring Lite (except for Custom tier)
                     <div className="flex gap-3">
-                      <motion.button
+                      <motion.a
+                        href="https://sdsmanager.com/us/sds-author/"
+                        rel="noopener noreferrer"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
-                        className={`flex-1 ${plan.buttonStyle} text-white py-4 px-6 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg`}
+                        className={`flex-1 ${plan.buttonStyle} text-white py-4 px-6 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg inline-flex items-center justify-center`}
                       >
                         {plan.buttonText}
-                      </motion.button>
+                        <ArrowRight className="ml-3 w-6 h-6" />
+                      </motion.a>
                       <motion.button
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
@@ -1089,7 +1092,7 @@ const IndexPage = () => {
                         <ArrowRight className="w-6 h-6 ml-3" />
                       </span>
                     </motion.a>
-                  ) : (plan.buttonText === 'Get Early Access' || plan.buttonText === 'Contact Us') ? (
+                  ) : (plan.buttonText === 'Contact Us') ? (
                     // Single button with link for other sections
                     <motion.a
                       href="https://docs.google.com/forms/d/e/1FAIpQLScDmCvkwwIrbh-bRW9OIzYDt_Uxk-GNVznykMepfrXHVjZjEg/viewform"
@@ -1100,6 +1103,18 @@ const IndexPage = () => {
                       className={`w-full ${plan.buttonStyle} text-white py-4 px-6 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg block text-center`}
                     >
                       {plan.buttonText}
+                    </motion.a>
+                  ) : (plan.buttonText === 'Start Free Trial') ? (
+                    // Single button with link for other sections
+                    <motion.a
+                      href={activePricingPanel === 'authoringlite' ? 'https://sdsmanager.com/us/sds-author/' : 'https://exactsds.sdsmanager.com/register'}
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className={`w-full ${plan.buttonStyle} py-4 px-6 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg block text-center inline-flex items-center justify-center`}
+                    >
+                      {plan.buttonText}
+                      <ArrowRight className="ml-3 w-6 h-6" />
                     </motion.a>
                   ) : (
                     // Single button for other sections
