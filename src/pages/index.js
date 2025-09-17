@@ -34,6 +34,7 @@ const IndexPage = () => {
   const [hoverTimer, setHoverTimer] = React.useState(null)
   const [isCalendlyLoading, setIsCalendlyLoading] = React.useState(true)
   const [demoType, setDemoType] = React.useState('exactsds') // 'exactsds' or 'authorlite'
+  const [expandedFAQ, setExpandedFAQ] = React.useState(0) // Track which FAQ is expanded
 
   // Handle hover events for Calendly modal
   const handleMouseEnter = (type = 'exactsds') => {
@@ -98,6 +99,65 @@ const IndexPage = () => {
       document.body.style.overflow = 'unset'
     }
   }, [showCalendlyModal])
+
+  // FAQ data
+  const faqData = [
+    {
+      question: "How can I generate SDS with ExactSDS?",
+      answer: "Exact SDS is an AI powered SDS generator. With ExactSDS, SDS generation starts by entering chemical CAS numbers and concentrations. ExactSDS then retrieves chemical data, applies classifications, and builds a ready-to-use SDS.",
+      icon: Zap
+    },
+    {
+      question: "Is ExactSDS a GHS-compliant SDS generator?",
+      answer: "Yes. ExactSDS is a GHS-compliant SDS generator, ensuring every sheet follows the Globally Harmonized System for hazard communication worldwide.",
+      icon: ShieldCheck
+    },
+    {
+      question: "Does ExactSDS work for small businesses?",
+      answer: "Yes. SDS authoring for small business is one of ExactSDS's strengths. It's affordable, simple, and scales as your needs grow.",
+      icon: Users
+    },
+    {
+      question: "What affects SDS authoring cost?",
+      answer: "SDS authoring cost depends on how often you need SDSs. ExactSDS offers flexible plans, from pay-as-you-go to enterprise packages.",
+      icon: BarChart3
+    },
+    {
+      question: "How does an SDS authoring software help?",
+      answer: "ExactSDS is an SDS authoring software that saves hours by drafting sections, applying regulations, and formatting the sheet for you.",
+      icon: Settings
+    },
+    {
+      question: "Can I author SDS myself with ExactSDS?",
+      answer: "Yes. With ExactSDS you can author SDS documents on your own with the help of AI, without needing external consultants.",
+      icon: FileText
+    },
+    {
+      question: "What is the best SDS authoring software?",
+      answer: "ExactSDS is one of the best SDS authoring software out there. It delivers compliance, ease of use, and automation in one integrated solution.",
+      icon: Star
+    },
+    {
+      question: "Is ExactSDS available internationally?",
+      answer: "Yes. ExactSDS is used for SDS authoring worldwide, including Australia, US, UK, Canada, China and more. It supports global and local compliance needs, making it one of the best authoring software options.",
+      icon: Globe
+    },
+    {
+      question: "Does ExactSDS support MSDS authoring?",
+      answer: "Authoring MSDS is the same as authoring SDSs, though the term \"MSDS\" is outdated. ExactSDS focuses on SDS, the modern replacement that is required by law. ExactSDS follows the GHS standard 16-section format to create compliant SDSs.",
+      icon: FileSpreadsheet
+    },
+    {
+      question: "From where does ExactSDS gather data to author SDSs?",
+      answer: "ExactSDS pulls its data from global chemical and regulatory sources to make sure every SDS is accurate and compliant. It gathers chemical data from global chemical libraries and SDS Manager's database of 16 million+ SDSs to generate hazard codes, and checks against current global regulations like GHS, REACH, CLP, and OSHA. When you enter CAS numbers and concentrations for your mixture, the system automatically gathers the right details and builds your SDS for you.",
+      icon: Database
+    }
+  ]
+
+  // Handle FAQ toggle
+  const toggleFAQ = (index) => {
+    setExpandedFAQ(expandedFAQ === index ? -1 : index)
+  }
 
   // Pricing data for each product
   const pricingData = {
@@ -617,9 +677,21 @@ const IndexPage = () => {
                   
                   {/* Title & Description */}
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">Author Lite</h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed mb-6">
                     Fast, flexible way to revise and update existing Safety Data Sheets. Edit, customize, and bring your SDSs up to date.
                   </p>
+                  
+                  {/* Learn More Button */}
+                  <div className="mt-auto">
+                    <a
+                      href="https://sdsmanager.com/us/sds-authoring-lite/"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center w-full text-[#5963f8] hover:text-blue-700 border border-[#5963f8] hover:border-blue-700 px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1"
+                    >
+                      Learn More
+                      <ArrowRight className="ml-2 w-5 h-5" />
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -635,9 +707,22 @@ const IndexPage = () => {
                   
                   {/* Title & Description */}
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">SDS Service</h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed mb-6">
                     Our team creates fully compliant Safety Data Sheets that are accurate, regulation-checked, and ready to distribute.
                   </p>
+                  
+                  {/* Contact Us Button */}
+                  <div className="mt-auto">
+                    <a
+                      href="https://docs.google.com/forms/d/e/1FAIpQLScDmCvkwwIrbh-bRW9OIzYDt_Uxk-GNVznykMepfrXHVjZjEg/viewform"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center w-full bg-gradient-to-r from-[#5963f8] via-purple-600 to-pink-600 hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1"
+                    >
+                      Contact Us
+                      <ArrowRight className="ml-2 w-5 h-5" />
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1140,6 +1225,157 @@ const IndexPage = () => {
           >
 
           </motion.div>
+        </div>
+      </section>
+
+      {/* FAQs Section */}
+      <section className="pb-16 bg-white relative overflow-hidden">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Section Header */}
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center px-6 py-3 bg-[#5963f8]/10 rounded-full border border-[#5963f8]/20 mb-6">
+              <div className="w-6 h-6 bg-[#5963f8]/20 rounded-full flex items-center justify-center mr-3">
+                <Search className="w-4 h-4 text-[#5963f8]" />
+              </div>
+              <span className="font-bold tracking-wider text-sm text-[#5963f8] uppercase">FREQUENTLY ASKED QUESTIONS</span>
+            </div>
+            
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 leading-tight">
+              Everything You Need to{" "}
+              <span className="text-[#5963f8]">Know About SDS Authoring</span>
+            </h2>
+            
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+              Get answers to the most common questions about our SDS authoring solutions and how they can help your business.
+            </p>
+          </div>
+
+          {/* Two Column Grid FAQs */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-start">
+            {faqData.map((faq, index) => (
+              <div 
+                key={index}
+                className={`bg-gray-50/50 rounded-lg border border-gray-200/60 overflow-hidden transition-all duration-200 h-fit ${
+                  expandedFAQ === index ? 'bg-white shadow-sm border-[#5963f8]/30' : 'hover:bg-gray-100/50'
+                }`}
+              >
+                <div 
+                  className="px-5 py-4 cursor-pointer group"
+                  onClick={() => toggleFAQ(index)}
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="flex items-start space-x-3 flex-1">
+                      {/* Icon */}
+                      <div className="w-8 h-8 bg-gray-200 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <faq.icon className="w-4 h-4 text-gray-600" />
+                      </div>
+                      
+                      {/* Question */}
+                      <div className="flex-1">
+                        <h3 className={`text-base font-medium transition-colors duration-200 ${
+                          expandedFAQ === index ? 'text-[#5963f8]' : 'text-gray-800 group-hover:text-[#5963f8]'
+                        }`}>
+                          {faq.question}
+                        </h3>
+                      </div>
+                    </div>
+                    
+                    {/* Arrow */}
+                    <div className="w-5 h-5 flex items-center justify-center flex-shrink-0 ml-3">
+                      <svg 
+                        className={`w-3 h-3 transition-all duration-200 ${
+                          expandedFAQ === index 
+                            ? 'text-[#5963f8] rotate-180' 
+                            : 'text-gray-400 group-hover:text-[#5963f8]'
+                        }`} 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Answer - Compact */}
+                <div className={`overflow-hidden transition-all duration-200 ${
+                  expandedFAQ === index ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'
+                }`}>
+                  <div className="px-5 pb-4 ml-11">
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                      {faq.answer}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Modern CTA Section */}
+      <section className="py-24 relative overflow-hidden" style={{
+        backgroundImage: `url(${require("../images/hero-bg.avif").default})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}>
+        {/* Background overlay for better text readability */}
+        <div className="absolute inset-0 bg-white/40 backdrop-blur-sm"></div>
+        
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center">
+            {/* Main CTA Content */}
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                Ready to Transform Your{" "}
+                <span className="text-[#5963f8]">SDS Workflow?</span>
+              </h2>
+              
+              <p className="text-xl text-gray-600 mb-12 leading-relaxed max-w-3xl mx-auto">
+                Join thousands of safety professionals who trust SDS Manager for fast, accurate, and compliant Safety Data Sheet creation.
+              </p>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+                <a
+                  href="https://exactsds.sdsmanager.com/register"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center justify-center bg-[#5963f8] hover:bg-blue-700 text-white px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-2xl hover:shadow-3xl transform hover:-translate-y-2 hover:scale-105"
+                >
+                  <span>Start Your Free Trial</span>
+                  <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
+                </a>
+                
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLScDmCvkwwIrbh-bRW9OIzYDt_Uxk-GNVznykMepfrXHVjZjEg/viewform"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center justify-center bg-white text-[#5963f8] hover:bg-gray-50 border-2 border-[#5963f8] hover:border-blue-700 px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 hover:scale-105"
+                >
+                  <span>Contact Our Experts</span>
+                  <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
+                </a>
+              </div>
+
+              {/* Trust Indicators */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-gray-900 mb-2">10,000+</div>
+                  <div className="text-gray-600 text-sm font-medium">Safety Professionals</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-gray-900 mb-2">16M+</div>
+                  <div className="text-gray-600 text-sm font-medium">SDS Database</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-gray-900 mb-2">80+</div>
+                  <div className="text-gray-600 text-sm font-medium">Countries Supported</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
