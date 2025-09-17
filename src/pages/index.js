@@ -714,7 +714,7 @@ const IndexPage = () => {
                   {/* Contact Us Button */}
                   <div className="mt-auto">
                     <a
-                      href="https://docs.google.com/forms/d/e/1FAIpQLScDmCvkwwIrbh-bRW9OIzYDt_Uxk-GNVznykMepfrXHVjZjEg/viewform"
+                      href="https://sdsmanager.com/us/contact-us/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center w-full bg-gradient-to-r from-[#5963f8] via-purple-600 to-pink-600 hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1"
@@ -1163,7 +1163,7 @@ const IndexPage = () => {
                   ) : plan.isContactOnly || (plan.hasTierSelector && plan.tiers && plan.tiers[selectedTier].price === 'Custom') ? (
                     // Eye-catching Contact Us button for SDS Services and Custom tier in Author Lite
                     <motion.a
-                      href="https://docs.google.com/forms/d/e/1FAIpQLScDmCvkwwIrbh-bRW9OIzYDt_Uxk-GNVznykMepfrXHVjZjEg/viewform"
+                      href="https://sdsmanager.com/us/contact-us/"
                       target="_blank"
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05, y: -2 }}
@@ -1179,7 +1179,7 @@ const IndexPage = () => {
                   ) : (plan.buttonText === 'Contact Us') ? (
                     // Single button with link for other sections
                     <motion.a
-                      href="https://docs.google.com/forms/d/e/1FAIpQLScDmCvkwwIrbh-bRW9OIzYDt_Uxk-GNVznykMepfrXHVjZjEg/viewform"
+                      href="https://sdsmanager.com/us/contact-us/"
                       target="_blank"
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.02 }}
@@ -1251,129 +1251,115 @@ const IndexPage = () => {
           </div>
 
           {/* Two Column Grid FAQs */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-start">
-            {faqData.map((faq, index) => (
-              <div 
-                key={index}
-                className={`bg-gray-50/50 rounded-lg border border-gray-200/60 overflow-hidden transition-all duration-200 h-fit ${
-                  expandedFAQ === index ? 'bg-white shadow-sm border-[#5963f8]/30' : 'hover:bg-gray-100/50'
-                }`}
-              >
-                <div 
-                  className="px-5 py-4 cursor-pointer group"
-                  onClick={() => toggleFAQ(index)}
-                >
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-start space-x-3 flex-1">
-                      {/* Icon */}
-                      <div className="w-8 h-8 bg-gray-200 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <faq.icon className="w-4 h-4 text-gray-600" />
-                      </div>
-                      
-                      {/* Question */}
-                      <div className="flex-1">
-                        <h3 className={`text-base font-medium transition-colors duration-200 ${
-                          expandedFAQ === index ? 'text-[#5963f8]' : 'text-gray-800 group-hover:text-[#5963f8]'
-                        }`}>
-                          {faq.question}
-                        </h3>
+          <div className="flex flex-col lg:flex-row gap-4">
+            {/* Left Column */}
+            <div className="flex-1 space-y-4">
+              {faqData.filter((_, index) => index % 2 === 0).map((faq, index) => {
+                const originalIndex = index * 2;
+                return (
+                  <div 
+                    key={originalIndex}
+                    className={`bg-gray-50/50 rounded-lg border border-gray-200/60 overflow-hidden transition-all duration-200 ${
+                      expandedFAQ === originalIndex ? 'bg-white shadow-sm border-[#5963f8]/30' : 'hover:bg-gray-100/50'
+                    }`}
+                  >
+                    <div 
+                      className="px-5 py-4 cursor-pointer group"
+                      onClick={() => toggleFAQ(originalIndex)}
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex-1">
+                          <h3 className={`text-base font-medium transition-colors duration-200 ${
+                            expandedFAQ === originalIndex ? 'text-[#5963f8]' : 'text-gray-800 group-hover:text-[#5963f8]'
+                          }`}>
+                            {faq.question}
+                          </h3>
+                        </div>
+                        
+                        <div className="w-5 h-5 flex items-center justify-center flex-shrink-0 ml-3">
+                          <svg 
+                            className={`w-3 h-3 transition-all duration-200 ${
+                              expandedFAQ === originalIndex 
+                                ? 'text-[#5963f8] rotate-180' 
+                                : 'text-gray-400 group-hover:text-[#5963f8]'
+                            }`} 
+                            fill="none" 
+                            stroke="currentColor" 
+                            viewBox="0 0 24 24"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </div>
                       </div>
                     </div>
                     
-                    {/* Arrow */}
-                    <div className="w-5 h-5 flex items-center justify-center flex-shrink-0 ml-3">
-                      <svg 
-                        className={`w-3 h-3 transition-all duration-200 ${
-                          expandedFAQ === index 
-                            ? 'text-[#5963f8] rotate-180' 
-                            : 'text-gray-400 group-hover:text-[#5963f8]'
-                        }`} 
-                        fill="none" 
-                        stroke="currentColor" 
-                        viewBox="0 0 24 24"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
+                    <div className={`overflow-hidden transition-all duration-200 ${
+                      expandedFAQ === originalIndex ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'
+                    }`}>
+                      <div className="px-5 pb-4">
+                        <p className="text-sm text-gray-600 leading-relaxed">
+                          {faq.answer}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-                
-                {/* Answer - Compact */}
-                <div className={`overflow-hidden transition-all duration-200 ${
-                  expandedFAQ === index ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'
-                }`}>
-                  <div className="px-5 pb-4 ml-11">
-                    <p className="text-sm text-gray-600 leading-relaxed">
-                      {faq.answer}
-                    </p>
+                );
+              })}
+            </div>
+
+            {/* Right Column */}
+            <div className="flex-1 space-y-4">
+              {faqData.filter((_, index) => index % 2 === 1).map((faq, index) => {
+                const originalIndex = index * 2 + 1;
+                return (
+                  <div 
+                    key={originalIndex}
+                    className={`bg-gray-50/50 rounded-lg border border-gray-200/60 overflow-hidden transition-all duration-200 ${
+                      expandedFAQ === originalIndex ? 'bg-white shadow-sm border-[#5963f8]/30' : 'hover:bg-gray-100/50'
+                    }`}
+                  >
+                    <div 
+                      className="px-5 py-4 cursor-pointer group"
+                      onClick={() => toggleFAQ(originalIndex)}
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex-1">
+                          <h3 className={`text-base font-medium transition-colors duration-200 ${
+                            expandedFAQ === originalIndex ? 'text-[#5963f8]' : 'text-gray-800 group-hover:text-[#5963f8]'
+                          }`}>
+                            {faq.question}
+                          </h3>
+                        </div>
+                        
+                        <div className="w-5 h-5 flex items-center justify-center flex-shrink-0 ml-3">
+                          <svg 
+                            className={`w-3 h-3 transition-all duration-200 ${
+                              expandedFAQ === originalIndex 
+                                ? 'text-[#5963f8] rotate-180' 
+                                : 'text-gray-400 group-hover:text-[#5963f8]'
+                            }`} 
+                            fill="none" 
+                            stroke="currentColor" 
+                            viewBox="0 0 24 24"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className={`overflow-hidden transition-all duration-200 ${
+                      expandedFAQ === originalIndex ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'
+                    }`}>
+                      <div className="px-5 pb-4">
+                        <p className="text-sm text-gray-600 leading-relaxed">
+                          {faq.answer}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Modern CTA Section */}
-      <section className="py-24 relative overflow-hidden" style={{
-        backgroundImage: `url(${require("../images/hero-bg.avif").default})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}>
-        {/* Background overlay for better text readability */}
-        <div className="absolute inset-0 bg-white/40 backdrop-blur-sm"></div>
-        
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center">
-            {/* Main CTA Content */}
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                Ready to Transform Your{" "}
-                <span className="text-[#5963f8]">SDS Workflow?</span>
-              </h2>
-              
-              <p className="text-xl text-gray-600 mb-12 leading-relaxed max-w-3xl mx-auto">
-                Join thousands of safety professionals who trust SDS Manager for fast, accurate, and compliant Safety Data Sheet creation.
-              </p>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
-                <a
-                  href="https://exactsds.sdsmanager.com/register"
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center justify-center bg-[#5963f8] hover:bg-blue-700 text-white px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-2xl hover:shadow-3xl transform hover:-translate-y-2 hover:scale-105"
-                >
-                  <span>Start Your Free Trial</span>
-                  <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
-                </a>
-                
-                <a
-                  href="https://docs.google.com/forms/d/e/1FAIpQLScDmCvkwwIrbh-bRW9OIzYDt_Uxk-GNVznykMepfrXHVjZjEg/viewform"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center justify-center bg-white text-[#5963f8] hover:bg-gray-50 border-2 border-[#5963f8] hover:border-blue-700 px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 hover:scale-105"
-                >
-                  <span>Contact Our Experts</span>
-                  <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
-                </a>
-              </div>
-
-              {/* Trust Indicators */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-gray-900 mb-2">10,000+</div>
-                  <div className="text-gray-600 text-sm font-medium">Safety Professionals</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-gray-900 mb-2">16M+</div>
-                  <div className="text-gray-600 text-sm font-medium">SDS Database</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-gray-900 mb-2">80+</div>
-                  <div className="text-gray-600 text-sm font-medium">Countries Supported</div>
-                </div>
-              </div>
+                );
+              })}
             </div>
           </div>
         </div>
